@@ -6,7 +6,6 @@ export default function Contact() {
       <PageHead
         canonical="https://localhost/shell/contact/"
         title="Contact | Shell"
-        const
         metaDescription="Contact description for SHELL application [70 characters are best here]."
       ></PageHead>
       <h1>Contact</h1>

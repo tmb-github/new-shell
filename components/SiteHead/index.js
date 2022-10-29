@@ -6,13 +6,14 @@ import siteMetadata from "../../data/siteMetadata.js";
 const SiteHead = () => {
   return (
     <Head>
+      {/* ADDED AUTOMATICALLY IN <Head> ELEMENT--NO NEED TO SET: <meta charset="utf-8"> */}
       {/*<title>PLACEHOLDER</title>*/}
       <meta name="viewport" content={siteMetadata.viewport} />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black" />
       <meta name="apple-mobile-web-app-title" content={siteMetadata.siteName} />
       <meta name="author" content={siteMetadata.author} />
-      <meta name="description" content="PLACEHOLDER" />
+      {/*<meta name="description" content="PLACEHOLDER" />*/}
       <meta
         name="google-site-verification"
         content={siteMetadata.googleSiteVerification}
@@ -28,7 +29,7 @@ const SiteHead = () => {
       <meta name="web_author" content={siteMetadata.author} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content={siteMetadata.twitterHandle} />
-      <meta name="twitter:description" content="PLACEHOLDER" />
+      {/*<meta name="twitter:description" content="PLACEHOLDER" />*/}
       <meta name="twitter:site" content={siteMetadata.site} />
       {/*<meta name="twitter:title" content="PLACEHOLDER" />*/}
       {/*<meta name="twitter:url" content="PLACEHOLDER" />*/}
@@ -37,7 +38,7 @@ const SiteHead = () => {
         name="twitter:image:alt"
         content={siteMetadata.socialShareImageAlt}
       />
-      <meta property="og:description" content="PLACEHOLDER" />
+      {/*<meta property="og:description" content="PLACEHOLDER" /> */}
       <meta property="og:image" content={siteMetadata.socialShareImage} />
       <meta
         property="og:image:alt"

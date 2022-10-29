@@ -8,14 +8,14 @@ import Link from "next/link";
 /* <main className={styles.main}> */
 
 // SEE: https://javascriptarticles.com/nextjs-dynamic-head-for-seo/
-
+/*
+ */
 export default function Home() {
   return (
     <>
       <PageHead
         canonical="https://localhost/shell/"
         title="Home | Shell"
-        const
         metaDescription="Home page description for SHELL application [70 characters are best here]."
       ></PageHead>
       <main>

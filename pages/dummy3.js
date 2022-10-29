@@ -6,7 +6,6 @@ export default function Dummy3() {
       <PageHead
         canonical="https://localhost/shell/dummy-3/"
         title="Dummy 3 | Shell"
-        const
         metaDescription="Dummy 3 description for SHELL application [70 characters are best here]."
       ></PageHead>
       <h1>Dummy 3</h1>
