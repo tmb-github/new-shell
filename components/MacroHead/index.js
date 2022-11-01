@@ -8,7 +8,6 @@ const Head = () => {
     <head>
       <meta charSet="utf-8" />
       {/*<title>PLACEHOLDER</title>*/}
-      <meta name="viewport" content={siteMetadata.viewport} />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black" />
       <meta name="apple-mobile-web-app-title" content={siteMetadata.siteName} />
@@ -25,7 +24,7 @@ const Head = () => {
       />
       <meta name="msapplication-TileColor" content={siteMetadata.tileColor} />
       <meta name="theme-color" content={siteMetadata.themeColor} />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="viewport" content={siteMetadata.viewport} />
       <meta name="web_author" content={siteMetadata.author} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content={siteMetadata.twitterHandle} />

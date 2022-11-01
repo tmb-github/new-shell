@@ -1,6 +1,6 @@
 import Head from "../../components/MicroHead";
 
-export default function Dummy1() {
+export default function Contact() {
   return (
     <>
       <Head
