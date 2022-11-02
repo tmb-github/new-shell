@@ -9,7 +9,7 @@ export default function Dummy1() {
         metaDescription="Dummy 1 description for SHELL application [70 characters are best here]."
       ></PageHead>
 
-      <h1>Dummy 11</h1>
+      <h1>Dummy 1</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
