@@ -1,4 +1,20 @@
 import PageHead from "../components/PageHead";
+import SchemaBreadcrumbs from "../components/SchemaBreadcrumbs";
+
+const breadcrumbArray = [
+  {
+    id: "https://localhost:3000/",
+    name: "home",
+    imgUrl:
+      "https://localhost/shell/images/head/shell-115x35.20220913070722.jpg",
+  },
+  {
+    id: "https://localhost:3000/dummy1",
+    name: "dummy1",
+    imgUrl:
+      "https://localhost/shell/images/head/shell-115x35.20220913070722.jpg",
+  },
+];
 
 export default function Dummy1() {
   return (
@@ -19,6 +35,7 @@ export default function Dummy1() {
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt
         mollit anim id est laborum.
       </p>
+      <SchemaBreadcrumbs breadcrumbArray={breadcrumbArray}></SchemaBreadcrumbs>
     </>
   );
 }

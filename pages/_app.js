@@ -2,6 +2,8 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SiteHead from "../components/SiteHead";
+import SchemaWebPage from "../components/SchemaWebPage";
+import SchemaPerson from "../components/SchemaPerson";
 
 const Layout = ({ children }) => (
   <>
@@ -9,6 +11,8 @@ const Layout = ({ children }) => (
     <Header />
     {children}
     <Footer />
+    <SchemaWebPage></SchemaWebPage>
+    <SchemaPerson></SchemaPerson>
   </>
 );
 
