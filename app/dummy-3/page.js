@@ -3,17 +3,19 @@ import SchemaBreadcrumbs from "../../components/SchemaBreadcrumbs";
 const breadcrumbArray = [
   {
     id: "https://localhost:3000/",
-    name: "home",
+    name: "Home",
     imgUrl:
       "https://localhost/shell/images/head/shell-115x35.20220913070722.jpg",
   },
   {
     id: "https://localhost:3000/dummy-3",
-    name: "dummy-3",
+    name: "Dummy 3",
     imgUrl:
       "https://localhost/shell/images/head/shell-115x35.20220913070722.jpg",
   },
 ];
+
+const mainClasses = "main dummy-3";
 
 export default function Dummy3() {
   return (
@@ -24,8 +26,10 @@ export default function Dummy3() {
         metaDescription="Dummy 3 page description for SHELL application [70 characters are best here]."
       ></Head>
 
-      <main>
-        <h1>Dummy 3</h1>
+      <main className="mainClasses">
+        <h1 id="main-content" tabIndex="0">
+          Dummy 3
+        </h1>
         <p>
           At vero eos et accusamus et iusto odio dignissimos ducimus qui
           blanditiis praesentium voluptatum deleniti atque corrupti quos dolores

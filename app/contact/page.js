@@ -3,17 +3,19 @@ import SchemaBreadcrumbs from "../../components/SchemaBreadcrumbs";
 const breadcrumbArray = [
   {
     id: "https://localhost:3000/",
-    name: "home",
+    name: "Home",
     imgUrl:
       "https://localhost/shell/images/head/shell-115x35.20220913070722.jpg",
   },
   {
     id: "https://localhost:3000/contact",
-    name: "contact",
+    name: "Contact",
     imgUrl:
       "https://localhost/shell/images/head/shell-115x35.20220913070722.jpg",
   },
 ];
+
+const mainClasses = "main contact";
 
 export default function Contact() {
   return (
@@ -24,8 +26,10 @@ export default function Contact() {
         metaDescription="Contact page description for SHELL application [70 characters are best here]."
       ></Head>
 
-      <main>
-        <h1>Contact</h1>
+      <main className={mainClasses}>
+        <h1 id="main-content" tabIndex="0">
+          Contact
+        </h1>
         <p>Contact page of Shell application</p>
 
         <SchemaBreadcrumbs

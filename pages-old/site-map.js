@@ -1,7 +1,7 @@
 import PageHead from "../components/PageHead";
 import SchemaBreadcrumbs from "../components/SchemaBreadcrumbs";
 import React, { useEffect, useRef } from "react";
-import CustomStyle from "../custom-style/PageContact";
+import CustomStyle from "../custom-style/PageSiteMap";
 import { default as common } from "../modules/common.mjs";
 
 const generatedNonce = process.env.generatedNonce;
@@ -14,17 +14,17 @@ const breadcrumbArray = [
       "https://localhost/shell/images/head/shell-115x35.20220913070722.jpg",
   },
   {
-    id: "https://localhost:3000/contact",
-    name: "Contact",
+    id: "https://localhost:3000/site-map",
+    name: "Site Map",
     imgUrl:
       "https://localhost/shell/images/head/shell-115x35.20220913070722.jpg",
   },
 ];
 
-const mainClasses = "main contact";
+const mainClasses = "main site-map";
 
-export default function Contact() {
-  const page = "contact";
+export default function SiteMap() {
+  const page = "site-map";
   const didMountRef = useRef(false);
   useEffect(() => {
     if (process.env.reactStrictMode) {
@@ -41,16 +41,26 @@ export default function Contact() {
   return (
     <>
       <PageHead
-        canonical="https://localhost/shell/contact/"
-        title="Contact | Shell"
-        metaDescription="Contact description for SHELL application [70 characters are best here]."
+        canonical="https://localhost/shell/site-map/"
+        title="Site Map | Shell"
+        metaDescription="Site Map description for SHELL application [70 characters are best here]."
       ></PageHead>
       <main className={mainClasses}>
         <h1 id="main-content" tabIndex="0">
-          Contact
+          Site Map
         </h1>
         <CustomStyle></CustomStyle>
-        <p>Contact page of Shell application</p>
+        <p>
+          Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+          per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt
+          mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis.
+          Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a
+          tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam
+          ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus.
+          Integer euismod lacus luctus magna. Quisque cursus, metus vitae
+          pharetra auctor, sem massa mattis sem, at interdum magna augue eget
+          diam.
+        </p>
         <SchemaBreadcrumbs
           breadcrumbArray={breadcrumbArray}
         ></SchemaBreadcrumbs>

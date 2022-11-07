@@ -35,8 +35,10 @@ const scriptSrc =
 const styleSrc = `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.cloudfront.net`;
 const workerSrc = `worker-src 'self' www.google.com www.youtube.com blob:`;
 
+const reactStrictMode = true;
+
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: reactStrictMode,
   swcMinify: true,
   experimental: { appDir: appDirBoolean },
   compress: true,
@@ -45,6 +47,7 @@ const nextConfig = {
   env: {
     generatedNonce: `${generatedNonce}`,
     nextJsVersion: nextJsVersion,
+    reactStrictMode: reactStrictMode,
   },
 
   // SEE: https://github.com/UnlyEd/next-right-now/blob/v2-mst-aptd-at-lcz-sty/next.config.js#L112-L215

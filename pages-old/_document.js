@@ -5,8 +5,12 @@ const generatedNonce = process.env.generatedNonce;
 export default function Document() {
   return (
     <Html lang="en-us">
-      <Head nonce={generatedNonce} />
-      <body>
+      <Head
+        nonce={generatedNonce}
+        prefix="og: http://ogp.me/ns#"
+        typeof="http://ogp.me/ns#"
+      />
+      <body className="body" data-orientation="initial">
         <Main />
         <NextScript nonce={generatedNonce} />
       </body>

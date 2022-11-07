@@ -14,8 +14,12 @@ const generatedNonce = process.env.generatedNonce;
 export default function RootLayout({ children }) {
   return (
     <html lang="en-us">
-      <Head nonce={generatedNonce}></Head>
-      <body>
+      <Head
+        nonce={generatedNonce}
+        prefix="og: http://ogp.me/ns#"
+        typeof="http://ogp.me/ns#"
+      ></Head>
+      <body className="body" data-orientation="initial">
         <Header />
         {children}
         <Footer />

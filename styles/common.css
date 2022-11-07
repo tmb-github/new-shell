@@ -31,7 +31,7 @@ e.g., if the value is 300deg, reset it to -60deg.
 	--footer-anchor: #eeb935;
 	--footer-background-color: #080808;
 
-	--footer-opacity: 0;
+	--footer-opacity: 1;
 
 /*	TEST: --footer-background-color: #303030; */
 
@@ -58,8 +58,10 @@ e.g., if the value is 300deg, reset it to -60deg.
 	--header-nav-li-height: 60px;
 	--image-background-matte-color: #efefef;
 	--logo-for-mobile-menu-margin-right: 0;
+
 /* This affects the opacity of both the main element and the footer: */
-	--main-opacity: 0;
+	--main-opacity: 1;
+
 	--main-scrollbar-width: 0px;
 	--medium-gray: #9f9f9f;
 	--menu-background-color: #fafafa;
@@ -106,6 +108,7 @@ This reproduces the old style of the Chrome focus ring:
 	padding: 0;
 	margin: 0;
 }
+
 
 /* SEE: https://webaim.org/techniques/css/invisiblecontent/ */
 .mce-tinymce.mce-container.mce-panel .screen-reader,
