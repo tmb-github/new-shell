@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 // Toggle between versions:
-const nextJsVersion = 12;
+const nextJsVersion = 13;
 
 //const nextSafe = require("next-safe");
 //const isDev = process.env.NODE_ENV !== "production";

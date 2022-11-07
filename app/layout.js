@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import SchemaWebPage from "../components/SchemaWebPage";
 import SchemaPerson from "../components/SchemaPerson";
 //import Script from "next/script";
+import "../styles/individual-imports.css";
 
 //console.info(process.env.generatedNonce);
 const generatedNonce = process.env.generatedNonce;

@@ -24,9 +24,13 @@ export default function Contact() {
         title="Contact | Shell"
         metaDescription="Contact description for SHELL application [70 characters are best here]."
       ></PageHead>
-      <h1>Contact</h1>
-      <p>Contact page of Shell application</p>
-      <SchemaBreadcrumbs breadcrumbArray={breadcrumbArray}></SchemaBreadcrumbs>
+      <main>
+        <h1>Contact</h1>
+        <p>Contact page of Shell application</p>
+        <SchemaBreadcrumbs
+          breadcrumbArray={breadcrumbArray}
+        ></SchemaBreadcrumbs>
+      </main>
     </>
   );
 }

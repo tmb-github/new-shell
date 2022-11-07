@@ -8,8 +8,8 @@ const breadcrumbArray = [
       "https://localhost/shell/images/head/shell-115x35.20220913070722.jpg",
   },
   {
-    id: "https://localhost:3000/dummy3",
-    name: "dummy3",
+    id: "https://localhost:3000/dummy-3",
+    name: "dummy-3",
     imgUrl:
       "https://localhost/shell/images/head/shell-115x35.20220913070722.jpg",
   },
@@ -19,7 +19,7 @@ export default function Dummy3() {
   return (
     <>
       <Head
-        canonical="https://localhost/shell/dummy3"
+        canonical="https://localhost/shell/dummy-3"
         title="Dummy 3 | Shell"
         metaDescription="Dummy 3 page description for SHELL application [70 characters are best here]."
       ></Head>

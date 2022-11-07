@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import SiteHead from "../components/SiteHead";
 import SchemaWebPage from "../components/SchemaWebPage";
 import SchemaPerson from "../components/SchemaPerson";
+import "../styles/individual-imports.css";
 
 const Layout = ({ children }) => (
   <>
