@@ -1,6 +1,6 @@
 const CustomStyle = () => {
   return (
-    <custom-style class="display-none">{`
+    <custom-style class="display-none page-home">{`
   
   /* To 463px (next query overtakes 464px): */
 

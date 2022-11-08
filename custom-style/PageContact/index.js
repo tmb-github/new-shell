@@ -1,6 +1,6 @@
 const CustomStyle = () => {
   return (
-    <custom-style class="display-none">{`
+    <custom-style class="display-none contact">{`
 /* 
 // reCAPTCHA and HONEYPOT code in this file; rem/unrem each appropriately
 */

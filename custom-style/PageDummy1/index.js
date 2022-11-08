@@ -1,6 +1,6 @@
 const CustomStyle = () => {
   return (
-    <custom-style class="display-none">{`
+    <custom-style class="display-none dummy-1">{`
 /* To 463px (next query overtakes 464px): */
 @media all and (max-width: 464px) {
 	.dummy-1.main {

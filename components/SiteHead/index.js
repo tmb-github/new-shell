@@ -1,6 +1,9 @@
 import Head from "next/head";
 import siteMetadata from "../../data/siteMetadata.js";
 
+// NB: This component is used in NextJs 12 for the "pages" folder
+// method of routine, not the NextJs 13 "app" folder routing.
+
 // The elements in the head that remain constant from page to page:
 
 const SiteHead = () => {

@@ -1,5 +1,6 @@
 
 /* Necessary or else the flex display on the body element is broken by the nextjs DIV wrapper around the inner contents */
-#__next#__next#__next {
+#__next#__next#__next,
+.body .header + div {
 	display: contents;
 }

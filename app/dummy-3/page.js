@@ -1,35 +1,52 @@
 import Head from "../../components/MicroHead";
 import SchemaBreadcrumbs from "../../components/SchemaBreadcrumbs";
+
+// Edit per page:
+import CustomStyle from "../../custom-style/PageDummy3";
+// definitions:
+const appName = "Shell";
+const baseHref = "https://localhost:3000/";
+const pageName = "Dummy 3";
+const pageCssName = "dummy-3";
+const urlSlug = pageCssName;
+
+// derived definitions:
+const appNameUC = appName.toUpperCase();
+const canonical = baseHref + urlSlug;
+const mainClasses = "main " + pageCssName;
+const metaDescription = `${pageName} page description for ${appNameUC} application [70 characters are best here].`;
+const title = `${pageName} | Shell`;
+
 const breadcrumbArray = [
   {
-    id: "https://localhost:3000/",
+    id: baseHref,
     name: "Home",
-    imgUrl:
-      "https://localhost/shell/images/head/shell-115x35.20220913070722.jpg",
+    imgUrl: `${baseHref}images/head/shell-115x35.jpg`,
   },
   {
-    id: "https://localhost:3000/dummy-3",
-    name: "Dummy 3",
-    imgUrl:
-      "https://localhost/shell/images/head/shell-115x35.20220913070722.jpg",
+    id: canonical,
+    name: pageName,
+    imgUrl: `${baseHref}images/head/shell-115x35.jpg`,
   },
 ];
 
-const mainClasses = "main dummy-3";
+const generatedNonce = process.env.generatedNonce;
 
 export default function Dummy3() {
   return (
     <>
       <Head
-        canonical="https://localhost/shell/dummy-3"
-        title="Dummy 3 | Shell"
-        metaDescription="Dummy 3 page description for SHELL application [70 characters are best here]."
+        canonical={canonical}
+        title={title}
+        metaDescription={metaDescription}
+        nonce={generatedNonce}
       ></Head>
 
-      <main className="mainClasses">
+      <main className={mainClasses}>
         <h1 id="main-content" tabIndex="0">
-          Dummy 3
+          {pageName}
         </h1>
+        <CustomStyle></CustomStyle>
         <p>
           At vero eos et accusamus et iusto odio dignissimos ducimus qui
           blanditiis praesentium voluptatum deleniti atque corrupti quos dolores

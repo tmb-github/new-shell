@@ -1,35 +1,52 @@
 import Head from "../../components/MicroHead";
 import SchemaBreadcrumbs from "../../components/SchemaBreadcrumbs";
+
+// Edit per page:
+import CustomStyle from "../../custom-style/PageDummy2";
+// definitions:
+const appName = "Shell";
+const baseHref = "https://localhost:3000/";
+const pageName = "Dummy 2";
+const pageCssName = "dummy-2";
+const urlSlug = pageCssName;
+
+// derived definitions:
+const appNameUC = appName.toUpperCase();
+const canonical = baseHref + urlSlug;
+const mainClasses = "main " + pageCssName;
+const metaDescription = `${pageName} page description for ${appNameUC} application [70 characters are best here].`;
+const title = `${pageName} | Shell`;
+
 const breadcrumbArray = [
   {
-    id: "https://localhost:3000/",
+    id: baseHref,
     name: "Home",
-    imgUrl:
-      "https://localhost/shell/images/head/shell-115x35.20220913070722.jpg",
+    imgUrl: `${baseHref}images/head/shell-115x35.jpg`,
   },
   {
-    id: "https://localhost:3000/dummy-2",
-    name: "Dummy 2",
-    imgUrl:
-      "https://localhost/shell/images/head/shell-115x35.20220913070722.jpg",
+    id: canonical,
+    name: pageName,
+    imgUrl: `${baseHref}images/head/shell-115x35.jpg`,
   },
 ];
 
-const mainClasses = "main dummy-2";
+const generatedNonce = process.env.generatedNonce;
 
 export default function Dummy2() {
   return (
     <>
       <Head
-        canonical="https://localhost/shell/dummy-2"
-        title="Dummy 2 | Shell"
-        metaDescription="Dummy 2 page description for SHELL application [70 characters are best here]."
+        canonical={canonical}
+        title={title}
+        metaDescription={metaDescription}
+        nonce={generatedNonce}
       ></Head>
 
       <main className={mainClasses}>
         <h1 id="main-content" tabIndex="0">
-          Dummy 2
+          {pageName}
         </h1>
+        <CustomStyle></CustomStyle>
         <p>
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem
           accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae

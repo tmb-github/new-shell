@@ -1,53 +1,65 @@
 import PageHead from "../components/PageHead";
 import SchemaBreadcrumbs from "../components/SchemaBreadcrumbs";
 import React, { useEffect, useRef } from "react";
-import CustomStyle from "../custom-style/PageDummy1";
 import { default as common } from "../modules/common.mjs";
+// EDIT:
+import CustomStyle from "../custom-style/PageDummy1";
+const pageName = "Dummy 1";
+const pageCssName = "dummy-1";
+const pageUrlSlug = pageCssName;
+// definitions:
+const appName = "Shell";
+const baseHref = "https://localhost:3000/";
 
-const generatedNonce = process.env.generatedNonce;
+// derived definitions:
+const appNameUC = appName.toUpperCase();
+const pageNameLC = pageName.toLowerCase();
+const canonical = baseHref + pageUrlSlug;
+const mainClasses = "main " + pageCssName;
+const metaDescription = `${pageName} page description for ${appNameUC} application [70 characters are best here].`;
+const title = `${pageName} | Shell`;
 
 const breadcrumbArray = [
   {
-    id: "https://localhost:3000/",
-    name: "home",
-    imgUrl:
-      "https://localhost/shell/images/head/shell-115x35.20220913070722.jpg",
+    id: baseHref,
+    name: "Home",
+    imgUrl: `${baseHref}images/head/shell-115x35.jpg`,
   },
   {
-    id: "https://localhost:3000/dummy-1",
-    name: "Dummy 1",
-    imgUrl:
-      "https://localhost/shell/images/head/shell-115x35.20220913070722.jpg",
+    id: canonical,
+    name: pageName,
+    imgUrl: `${baseHref}images/head/shell-115x35.jpg`,
   },
 ];
 
-const mainClasses = "main dummy-1";
+const generatedNonce = process.env.generatedNonce;
 
-export default function Dummy1() {
-  const page = "dummy-1";
+export default function Home() {
   const didMountRef = useRef(false);
   useEffect(() => {
     if (process.env.reactStrictMode) {
       if (didMountRef.current) {
-        common.customStyle(page, generatedNonce);
+        common.customStyle(pageNameLC, generatedNonce);
       } else {
         didMountRef.current = true;
       }
     } else {
-      common.customStyle(page, generatedNonce);
+      common.customStyle(pageNameLC, generatedNonce);
     }
   }, []);
 
   return (
     <>
       <PageHead
-        canonical="https://localhost/shell/dummy-1/"
-        title="Dummy 1 | Shell"
-        metaDescription="Dummy 1 description for SHELL application [70 characters are best here]."
+        canonical={canonical}
+        title={title}
+        metaDescription={metaDescription}
+        nonce={generatedNonce}
       ></PageHead>
+
       <main className={mainClasses}>
         <h1 id="main-content" tabIndex="0">
-          Dummy 1
+          {pageName}
         </h1>
         <CustomStyle></CustomStyle>
         <p>

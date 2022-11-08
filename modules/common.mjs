@@ -22,7 +22,6 @@ customStyle = function (page, generatedNonce) {
     .forEach(function (customStyleElement) {
       let fragment;
       let headElement;
-      let page;
       let styleElement;
 
       // Select <head>:

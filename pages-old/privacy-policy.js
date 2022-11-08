@@ -1,53 +1,65 @@
 import PageHead from "../components/PageHead";
 import SchemaBreadcrumbs from "../components/SchemaBreadcrumbs";
 import React, { useEffect, useRef } from "react";
-import CustomStyle from "../custom-style/PagePrivacyPolicy";
 import { default as common } from "../modules/common.mjs";
+// EDIT:
+import CustomStyle from "../custom-style/PagePrivacyPolicy";
+const pageName = "Privacy Policy";
+const pageCssName = "privacy-policy";
+const pageUrlSlug = pageCssName;
+// definitions:
+const appName = "Shell";
+const baseHref = "https://localhost:3000/";
 
-const generatedNonce = process.env.generatedNonce;
+// derived definitions:
+const appNameUC = appName.toUpperCase();
+const pageNameLC = pageName.toLowerCase();
+const canonical = baseHref + pageUrlSlug;
+const mainClasses = "main " + pageCssName;
+const metaDescription = `${pageName} page description for ${appNameUC} application [70 characters are best here].`;
+const title = `${pageName} | Shell`;
 
 const breadcrumbArray = [
   {
-    id: "https://localhost:3000/",
-    name: "home",
-    imgUrl:
-      "https://localhost/shell/images/head/shell-115x35.20220913070722.jpg",
+    id: baseHref,
+    name: "Home",
+    imgUrl: `${baseHref}images/head/shell-115x35.jpg`,
   },
   {
-    id: "https://localhost:3000/privacy-policy",
-    name: "Privacy Policy",
-    imgUrl:
-      "https://localhost/shell/images/head/shell-115x35.20220913070722.jpg",
+    id: canonical,
+    name: pageName,
+    imgUrl: `${baseHref}images/head/shell-115x35.jpg`,
   },
 ];
 
-const mainClasses = "main privacy-policy";
+const generatedNonce = process.env.generatedNonce;
 
-export default function SiteMap() {
-  const page = "privacy-policy";
+export default function Home() {
   const didMountRef = useRef(false);
   useEffect(() => {
     if (process.env.reactStrictMode) {
       if (didMountRef.current) {
-        common.customStyle(page, generatedNonce);
+        common.customStyle(pageNameLC, generatedNonce);
       } else {
         didMountRef.current = true;
       }
     } else {
-      common.customStyle(page, generatedNonce);
+      common.customStyle(pageNameLC, generatedNonce);
     }
   }, []);
 
   return (
     <>
       <PageHead
-        canonical="https://localhost/shell/privacy-policy/"
-        title="Privacy Policy | Shell"
-        metaDescription="Privacy Policy description for SHELL application [70 characters are best here]."
+        canonical={canonical}
+        title={title}
+        metaDescription={metaDescription}
+        nonce={generatedNonce}
       ></PageHead>
+
       <main className={mainClasses}>
         <h1 id="main-content" tabIndex="0">
-          Privacy Policy
+          {pageName}
         </h1>
         <CustomStyle></CustomStyle>
         <p>

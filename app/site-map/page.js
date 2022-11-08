@@ -1,35 +1,52 @@
 import Head from "../../components/MicroHead";
 import SchemaBreadcrumbs from "../../components/SchemaBreadcrumbs";
+
+// Edit per page:
+import CustomStyle from "../../custom-style/PageSiteMap";
+// definitions:
+const appName = "Shell";
+const baseHref = "https://localhost:3000/";
+const pageName = "Site Map";
+const pageCssName = "site-map";
+const urlSlug = pageCssName;
+
+// derived definitions:
+const appNameUC = appName.toUpperCase();
+const canonical = baseHref + urlSlug;
+const mainClasses = "main " + pageCssName;
+const metaDescription = `${pageName} page description for ${appNameUC} application [70 characters are best here].`;
+const title = `${pageName} | Shell`;
+
 const breadcrumbArray = [
   {
-    id: "https://localhost:3000/",
+    id: baseHref,
     name: "Home",
-    imgUrl:
-      "https://localhost/shell/images/head/shell-115x35.20220913070722.jpg",
+    imgUrl: `${baseHref}images/head/shell-115x35.jpg`,
   },
   {
-    id: "https://localhost:3000/site-map",
-    name: "Site Map",
-    imgUrl:
-      "https://localhost/shell/images/head/shell-115x35.20220913070722.jpg",
+    id: canonical,
+    name: pageName,
+    imgUrl: `${baseHref}images/head/shell-115x35.jpg`,
   },
 ];
 
-const mainClasses = "main site-map";
+const generatedNonce = process.env.generatedNonce;
 
 export default function SiteMap() {
   return (
     <>
       <Head
-        canonical="https://localhost/shell/site-map"
-        title="Site Map | Shell"
-        metaDescription="Site Map page description for SHELL application [70 characters are best here]."
+        canonical={canonical}
+        title={title}
+        metaDescription={metaDescription}
+        nonce={generatedNonce}
       ></Head>
 
       <main className={mainClasses}>
         <h1 id="main-content" tabIndex="0">
-          Site Map
+          {pageName}
         </h1>
+        <CustomStyle></CustomStyle>
         <p>
           Class aptent taciti sociosqu ad litora torquent per conubia nostra,
           per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt

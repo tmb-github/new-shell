@@ -5,7 +5,7 @@ import siteMetadata from "../../data/siteMetadata.js";
 //export default async function Head() {
 const Head = () => {
   return (
-    <head>
+    <head prefix="og: http://ogp.me/ns#" typeof="http://ogp.me/ns#">
       <meta charSet="utf-8" />
       {/*<title>PLACEHOLDER</title>*/}
       <meta name="apple-mobile-web-app-capable" content="yes" />

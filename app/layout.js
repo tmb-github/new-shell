@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import Head from "../components/MacroHead";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -14,11 +15,7 @@ const generatedNonce = process.env.generatedNonce;
 export default function RootLayout({ children }) {
   return (
     <html lang="en-us">
-      <Head
-        nonce={generatedNonce}
-        prefix="og: http://ogp.me/ns#"
-        typeof="http://ogp.me/ns#"
-      ></Head>
+      <Head nonce={generatedNonce}></Head>
       <body className="body" data-orientation="initial">
         <Header />
         {children}
