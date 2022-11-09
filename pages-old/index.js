@@ -15,7 +15,7 @@ const baseHref = "https://localhost:3000/";
 const appNameUC = appName.toUpperCase();
 const pageNameLC = pageName.toLowerCase();
 const canonical = baseHref + pageUrlSlug;
-const mainClasses = "main " + pageCssName;
+const mainClasses = "main visibility-hidden " + pageCssName;
 const metaDescription = `${pageName} page description for ${appNameUC} application [70 characters are best here].`;
 const title = `${pageName} | Shell`;
 

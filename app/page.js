@@ -1,6 +1,8 @@
 import Head from "../components/MicroHead";
 import SchemaBreadcrumbs from "../components/SchemaBreadcrumbs";
 
+//import Script from "next/script";
+
 // Edit per page:
 import CustomStyle from "../custom-style/PageHome";
 // definitions:
@@ -13,7 +15,7 @@ const urlSlug = "";
 // derived definitions:
 const appNameUC = appName.toUpperCase();
 const canonical = baseHref + urlSlug;
-const mainClasses = "main " + pageCssName;
+const mainClasses = "main visibility-hidden " + pageCssName;
 const metaDescription = `${pageName} page description for ${appNameUC} application [70 characters are best here].`;
 const title = `${pageName} | Shell`;
 

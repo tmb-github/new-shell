@@ -39,15 +39,21 @@ customStyle = function (page, generatedNonce) {
       styleElement.innerHTML = customStyleElement.innerHTML;
       headElement.appendChild(fragment);
 
-      if (customStyleElement.parentNode) {
-        // remove element from the DOM:
-        customStyleElement.parentNode.removeChild(customStyleElement);
-        // Remove reference to element so it can be garbage-collected:
-        // (Set each element in the loop to null, as not all elements will
-        // have parents, so not all of them will deleted, so we can't simply
-        // test for the last element returned by the forEach loop)
-        customStyleElement = null;
-      }
+      document
+        .querySelector(".main.visibility-hidden")
+        ?.classList.remove("visibility-hidden");
+      /*
+// Leaving this in causes warning in console: "Expected server HTML to contain a matching <custom-style> in <main>."
+        if (customStyleElement.parentNode) {
+          // remove element from the DOM:
+          customStyleElement.parentNode.removeChild(customStyleElement);
+          // Remove reference to element so it can be garbage-collected:
+          // (Set each element in the loop to null, as not all elements will
+          // have parents, so not all of them will deleted, so we can't simply
+          // test for the last element returned by the forEach loop)
+          customStyleElement = null;
+        }
+*/
     });
 };
 
