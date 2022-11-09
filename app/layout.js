@@ -5,9 +5,9 @@ import Footer from "../components/Footer";
 import SchemaWebPage from "../components/SchemaWebPage";
 import SchemaPerson from "../components/SchemaPerson";
 
-//import Script from "next/script";
+import Script from "next/script";
 // https://github.com/vercel/next.js/discussions/41745
-
+// <script src="scripts/customStyle.js"></script>
 import "../styles/individual-imports.css";
 
 //console.info(process.env.generatedNonce);
@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
         <Footer />
         <SchemaWebPage></SchemaWebPage>
         <SchemaPerson></SchemaPerson>
-        <script src="scripts/customStyle.js"></script>
+        <Script src="scripts/customStyle.js" />
       </body>
     </html>
   );
