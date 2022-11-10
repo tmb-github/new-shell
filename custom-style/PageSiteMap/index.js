@@ -1,138 +1,48 @@
 const CustomStyle = () => {
   return (
     <custom-style class="display-none">{`
-.site-map h1 {
-	background-color: var(--menu-background-color);
-	border-radius: 6px;
-	box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.42), 0 3px 20px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
-	color: var(--body-text-color);
-	font-size: 1.5rem;
-	font-weight: 700;
-	line-height: 1.5;
-	margin: 0 30px 0;
-	padding: 16px 0;
-	text-align: center;
+/* To 463px (next query overtakes 464px): */
+@media all and (max-width: 464px) {
+	.site-map.main {
+		margin: calc(1em + var(--header-height)) 1em 3em 1em;
+	}
 }
-
-.site-map h2 {
-	font-size: 1.25rem;
-	font-style: italic;
-	font-weight: 700;
-	letter-spacing: .15rem;
-	line-height: 1.5;
-	padding-top: 1em;
-	text-align: center;
-	text-shadow: 0 0 1px #fff, 0 0 0 #adadad, 1px 1px 0 #adadad, 1px 1px 1px #adadad;
-	word-spacing: .15rem;
-}
-
-.site-map h2 span {
-	display: block;
-	margin: 1em;
-}
-
-.site-map #top {
-	background-color: #b1d1e8;
-	color: #3b3b3b;
-	font-size: 16px;
-	padding-bottom: 40px;
-	padding-top: 72px;
-}
-
-.site-map #top a:link, 
-.site-map #top a:visited {
-	color: #3b3b3b;
-}
-
-.site-map #cont {
-	background: var(--menu-background-color);
-	border-radius: 6px;
-	box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
-	margin: -20px 30px 0 30px;
-	padding: 20px;
-	position: relative;
-}
-
-.site-map #footer {
-	font-size: 1rem;
-	font-weight: 700;
-	line-height: 1.5;
-	margin: 2em;
-	padding: 10px;
-	text-align: center;
+/* From 464px: */
+@media all and (min-width: 464px) {
+	.site-map.main {
+		margin: calc(1em + var(--header-height)) auto 3em auto;
+		width: 432px;
+	}
 }
 
 .site-map a:link {
 	background: transparent;
-	color: var(--body-text-color);
 }
 
-.site-map a:visited {
-	color: var(--body-text-color);
+.site-map p {
+	margin-top: 1em;
 }
 
-.site-map a:hover {
-	color: #666;
+.site-map h2 {
+	font-size: 1.5em;
+	margin: .25em 0 0 0;
+	text-align: center;
 }
-
 
 /*
-.site-map ul, 
-.site-map ul li {
-	list-style-position: inside;
-	margin-left: 0;
-	padding-left: 0;
-}
-
-.site-map li {
+.site-map h2 > p,
+.site-map p ~ p {
 	margin: 0;
-}
-
-.site-map li ul {
-	margin-left: 20px;
+	padding: 0;
 }
 */
 
-.site-map .lhead {
-	background: #ddd;
-	border-radius: 6px;
-	color: #3b3b3b;
-	padding: 10px 32px;
-	margin: 10px 0;
+/* Limit paragraph width to @62 characters (ch unit wouldn't work here): */
+/* We have to chain .main to .site-map to increase the specificity to make the styling work */
+.site-map.main p {
+	max-width: 27em;
 }
 
-.site-map .lcount {
-	padding: 0 10px;
-}
-
-.site-map .lpage {
-	border-bottom: #ddd 1px solid;
-	padding: 5px 5px 5px 32px;
-}
-
-.site-map .last-page {
-	border: none;
-}
-
-/*
-@media all and (max-width: 759px) {
-
-	.site-map ul,
-	.site-map ul ~ ul,
-	.site-map li, 
-	.site-map li ~ li {
-		margin: 0;
-		padding: 0;
-		list-style-position: inside;
-	}
-
-	.site-map .lpage {
-		border-bottom: #ddd 1px solid;
-		padding: 10px 5px 10px 32px;
-	}
-}
-
-*/
   `}</custom-style>
   );
 };

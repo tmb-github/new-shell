@@ -13,7 +13,7 @@ const urlSlug = pageCssName;
 // derived definitions:
 const appNameUC = appName.toUpperCase();
 const canonical = baseHref + urlSlug;
-const mainClasses = "main visibility-hidden " + pageCssName;
+const mainClasses = "main " + pageCssName;
 const metaDescription = `${pageName} page description for ${appNameUC} application [70 characters are best here].`;
 const title = `${pageName} | Shell`;
 
@@ -42,7 +42,7 @@ export default function Dummy3() {
         nonce={generatedNonce}
       ></Head>
 
-      <main className={mainClasses}>
+      <main className={mainClasses} data-mjs="dummy3">
         <h1 id="main-content" tabIndex="0">
           {pageName}
         </h1>

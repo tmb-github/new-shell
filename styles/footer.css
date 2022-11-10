@@ -16,6 +16,7 @@
   */
     z-index: 100;
     opacity: var(--footer-opacity);
+    margin-top: auto;
   }
   
   

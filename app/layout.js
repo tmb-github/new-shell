@@ -5,9 +5,9 @@ import Footer from "../components/Footer";
 import SchemaWebPage from "../components/SchemaWebPage";
 import SchemaPerson from "../components/SchemaPerson";
 
-import Script from "next/script";
+//import Script from "next/script";
 // https://github.com/vercel/next.js/discussions/41745
-// <script src="scripts/customStyle.js"></script>
+
 import "../styles/individual-imports.css";
 
 //console.info(process.env.generatedNonce);
@@ -18,14 +18,14 @@ const generatedNonce = process.env.generatedNonce;
 export default function RootLayout({ children }) {
   return (
     <html lang="en-us">
-      <Head nonce={generatedNonce}></Head>
+      <Head nonce={generatedNonce} />
       <body className="body" data-orientation="initial">
         <Header />
         {children}
         <Footer />
-        <SchemaWebPage></SchemaWebPage>
-        <SchemaPerson></SchemaPerson>
-        <Script src="scripts/customStyle.js" />
+        <SchemaWebPage />
+        <SchemaPerson />
+        <script src="scripts/common.js"></script>
       </body>
     </html>
   );

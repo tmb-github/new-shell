@@ -60,7 +60,7 @@ e.g., if the value is 300deg, reset it to -60deg.
 	--logo-for-mobile-menu-margin-right: 0;
 
 /* This affects the opacity of both the main element and the footer: */
-	--main-opacity: 1;
+	--main-opacity: 0;
 
 	--main-scrollbar-width: 0px;
 	--medium-gray: #9f9f9f;

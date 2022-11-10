@@ -4,16 +4,21 @@ import Footer from "../components/Footer";
 import SiteHead from "../components/SiteHead";
 import SchemaWebPage from "../components/SchemaWebPage";
 import SchemaPerson from "../components/SchemaPerson";
+import Script from "next/script";
 import "../styles/individual-imports.css";
+import { getNamedRouteRegex } from "next/dist/shared/lib/router/utils/route-regex";
+
+//<Header />
 
 const Layout = ({ children }) => (
   <>
-    <SiteHead></SiteHead>
+    <SiteHead />
     <Header />
+    <Script src="scripts/common.js" strategy="beforeInteractive"></Script>
     {children}
     <Footer />
-    <SchemaWebPage></SchemaWebPage>
-    <SchemaPerson></SchemaPerson>
+    <SchemaWebPage />
+    <SchemaPerson />
   </>
 );
 

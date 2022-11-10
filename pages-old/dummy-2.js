@@ -1,7 +1,6 @@
 import PageHead from "../components/PageHead";
 import SchemaBreadcrumbs from "../components/SchemaBreadcrumbs";
-import React, { useEffect, useRef } from "react";
-import { default as common } from "../modules/common.mjs";
+
 // EDIT:
 import CustomStyle from "../custom-style/PageDummy2";
 const pageName = "Dummy 2";
@@ -13,9 +12,8 @@ const baseHref = "https://localhost:3000/";
 
 // derived definitions:
 const appNameUC = appName.toUpperCase();
-const pageNameLC = pageName.toLowerCase();
 const canonical = baseHref + pageUrlSlug;
-const mainClasses = "main visibility-hidden " + pageCssName;
+const mainClasses = "main " + pageCssName;
 const metaDescription = `${pageName} page description for ${appNameUC} application [70 characters are best here].`;
 const title = `${pageName} | Shell`;
 
@@ -34,20 +32,7 @@ const breadcrumbArray = [
 
 const generatedNonce = process.env.generatedNonce;
 
-export default function Home() {
-  const didMountRef = useRef(false);
-  useEffect(() => {
-    if (process.env.reactStrictMode) {
-      if (didMountRef.current) {
-        common.customStyle(pageNameLC, generatedNonce);
-      } else {
-        didMountRef.current = true;
-      }
-    } else {
-      common.customStyle(pageNameLC, generatedNonce);
-    }
-  }, []);
-
+export default function Main() {
   return (
     <>
       <PageHead

@@ -9,7 +9,7 @@ export default function Document() {
         nonce={generatedNonce}
         prefix="og: http://ogp.me/ns#"
         typeof="http://ogp.me/ns#"
-      />
+      ></Head>
       <body className="body" data-orientation="initial">
         <Main />
         <NextScript nonce={generatedNonce} />
