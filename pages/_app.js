@@ -6,9 +6,12 @@ import SchemaWebPage from "../components/SchemaWebPage";
 import SchemaPerson from "../components/SchemaPerson";
 import Script from "next/script";
 import "../styles/individual-imports.css";
-import { getNamedRouteRegex } from "next/dist/shared/lib/router/utils/route-regex";
-
-//<Header />
+//import { getNamedRouteRegex } from "next/dist/shared/lib/router/utils/route-regex";
+/*
+export default function MyApp({ Component, pageProps }) {
+  return (
+    <main className={cabin.className}></main>
+*/
 
 const Layout = ({ children }) => (
   <>

@@ -8,28 +8,28 @@ See: https://web.dev/font-best-practices/
   font-display: swap;
   font-style: normal;
   font-weight: 400;
-  src: url(/shell/fonts/Cabin-Roman-400.woff2) format('woff2');
+  src: url("../fonts/Cabin-Roman-400.woff2") format('woff2');
 }
 @font-face {
   font-family: 'Cabin';
   font-display: swap;
   font-style: italic;
   font-weight: 400;
-  src: url(/shell/fonts/Cabin-Italic-400.woff2) format('woff2');
+  src: url("../fonts/Cabin-Italic-400.woff2") format('woff2');
 }
 @font-face {
   font-family: 'Cabin';
   font-display: swap;
   font-style: normal;
   font-weight: 700;
-  src: url(/shell/fonts/Cabin-Bold-700.woff2) format('woff2');
+  src: url("../fonts/Cabin-Bold-700.woff2") format('woff2');
 }
 @font-face {
   font-family: 'Cabin';
   font-display: swap;
   font-style: italic;
   font-weight: 700;
-  src: url(/shell/fonts/Cabin-Bold-Italic-700.woff2) format('woff2');
+  src: url("../fonts/Cabin-Bold-Italic-700.woff2") format('woff2');
 }
 /*
 // 2021-02-13:

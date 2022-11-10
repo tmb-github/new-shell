@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 // Toggle between versions:
-const nextJsVersion = 13;
+const nextJsVersion = 12;
 
 //const nextSafe = require("next-safe");
 //const isDev = process.env.NODE_ENV !== "production";
@@ -36,11 +36,16 @@ const styleSrc = `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com 
 const workerSrc = `worker-src 'self' www.google.com www.youtube.com blob:`;
 
 const reactStrictMode = true;
-
+// https://google-webfonts-helper.herokuapp.com/fonts/lora?subsets=latin
 const nextConfig = {
   reactStrictMode: reactStrictMode,
   swcMinify: true,
-  experimental: { appDir: appDirBoolean },
+  experimental: {
+    appDir: appDirBoolean,
+    fontLoaders: [
+      { loader: "@next/font/google", options: { subsets: ["latin"] } },
+    ],
+  },
   compress: true,
   /* Disable x-powered-by header, which exposes next.js as the server */
   poweredByHeader: false,
