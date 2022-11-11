@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-head-element */
 import siteMetadata from "../../data/siteMetadata.js";
 
+// Next.js 13: called by layout.js
+
 // The elements in the head that remain constant from page to page:
 //export default async function Head() {
 const Head = () => {

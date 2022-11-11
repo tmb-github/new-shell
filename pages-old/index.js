@@ -53,6 +53,12 @@ export default function Main() {
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
         </p>
+        <p className="roman">The quick brown fox jumped over the lazy dogs.</p>
+        <p className="italic">The quick brown fox jumped over the lazy dogs.</p>
+        <p className="bold">The quick brown fox jumped over the lazy dogs.</p>
+        <p className="bold-italic">
+          The quick brown fox jumped over the lazy dogs.
+        </p>
         <SchemaBreadcrumbs
           breadcrumbArray={breadcrumbArray}
         ></SchemaBreadcrumbs>

@@ -13,6 +13,40 @@ export default function MyApp({ Component, pageProps }) {
     <main className={cabin.className}></main>
 */
 
+import localFont from "@next/font/local";
+const cabin = localFont({
+  variable: "--cabin-font",
+  src: [
+    {
+      path: "../fonts/Cabin-Roman-400.woff2",
+      weight: "400",
+      style: "normal",
+      display: "swap",
+    },
+
+    {
+      path: "../fonts/Cabin-Italic-400.woff2",
+      weight: "400",
+      style: "italic",
+      display: "swap",
+    },
+
+    {
+      path: "../fonts/Cabin-Bold-700.woff2",
+      weight: "700",
+      style: "normal",
+      display: "swap",
+    },
+
+    {
+      path: "../fonts/Cabin-Bold-Italic-700.woff2",
+      weight: "700",
+      style: "italic",
+      display: "swap",
+    },
+  ],
+});
+
 const Layout = ({ children }) => (
   <>
     <SiteHead />
@@ -28,6 +62,11 @@ const Layout = ({ children }) => (
 function MyApp({ Component, pageProps }) {
   return (
     <Layout>
+      <style jsx global>{`
+        html {
+          font-family: ${cabin.style.fontFamily};
+        }
+      `}</style>
       <Component {...pageProps} />
     </Layout>
   );
