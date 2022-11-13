@@ -7,9 +7,11 @@ var o;
 o = {};
 
 modules = [
+  "./modules/fauxPopstate.mjs",
   "./modules/customStyle.mjs",
   "./modules/appendToCSS.mjs",
   "./modules/pageModuleLoader.mjs",
+  "./modules/commonEventListeners.mjs",
 ];
 
 o.assignToCommonObject = function (object) {
@@ -23,8 +25,10 @@ o.assignToCommonObject = function (object) {
 };
 
 commonRoutines = function () {
+	o.fauxPopstate();
   o.customStyle();
   o.pageModuleLoader();
+  o.commonEventListeners();
 };
 
 loadModules = function () {

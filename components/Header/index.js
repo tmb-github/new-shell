@@ -8,12 +8,12 @@ import Navbar from "./NavBar";
 const Header = () => {
   return (
     <header className="header">
-      <H1></H1>
-      <SkipToMainContent></SkipToMainContent>
-      <ForceSiteFontLoad></ForceSiteFontLoad>
-      <Hamburger></Hamburger>
-      <TransparentMask></TransparentMask>
-      <Navbar></Navbar>
+      <H1 />
+      <SkipToMainContent />
+      <ForceSiteFontLoad />
+      <Hamburger />
+      <TransparentMask />
+      <Navbar />
     </header>
   );
 };

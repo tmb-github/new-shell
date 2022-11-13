@@ -39,6 +39,10 @@ const reactStrictMode = true;
 // https://google-webfonts-helper.herokuapp.com/fonts/lora?subsets=latin
 const nextConfig = {
   reactStrictMode: reactStrictMode,
+  compiler: {
+    // Enables the styled-components SWC transform
+    styledComponents: true,
+  },
   swcMinify: true,
   experimental: {
     appDir: appDirBoolean,
