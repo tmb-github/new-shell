@@ -118,3 +118,4 @@ failsafeInterval = setInterval(loadModules, 3000);
 // NB: To monitor all window events in console:
 // monitorEvents(window);
 // See: https://developer.chrome.com/blog/quickly-monitor-events-from-the-console-panel-2/
+//
