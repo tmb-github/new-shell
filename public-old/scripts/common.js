@@ -28,11 +28,7 @@ commonRoutines = function () {
   o.fauxPopstate();
   o.customStyle();
   o.pageModuleLoader();
-  // We must wait before setting any classes, etc., on elements
-  // that were not present on the components. This is a hack;
-  // 575 is the smallest interval possible in testing, so 625
-  // is used here for good measure.
-  window.setTimeout(o.commonEventListeners, 625);
+  o.commonEventListeners();
 };
 
 loadModules = function () {
@@ -50,7 +46,11 @@ loadModules = function () {
   } else {
     // Call common routines when done:
     commonRoutines();
+    window.removeEventListener("load", loadModules);
   }
 };
 
-loadModules();
+// We must wait before setting any classes, etc., on elements
+// that were not present on the components.
+window.addEventListener("load", loadModules);
+//window.setTimeout(loadModules, 167);
