@@ -25,10 +25,14 @@ o.assignToCommonObject = function (object) {
 };
 
 commonRoutines = function () {
-	o.fauxPopstate();
+  o.fauxPopstate();
   o.customStyle();
   o.pageModuleLoader();
-  o.commonEventListeners();
+  // We must wait before setting any classes, etc., on elements
+  // that were not present on the components. This is a hack;
+  // 575 is the smallest interval possible in testing, so 625
+  // is used here for good measure.
+  window.setTimeout(o.commonEventListeners, 625);
 };
 
 loadModules = function () {
