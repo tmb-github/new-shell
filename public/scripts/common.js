@@ -109,9 +109,6 @@ observeTitle();
 // In case there are not at least 2 changes to TITLE, run loadModules() after 3 seconds:
 failsafeInterval = setInterval(loadModules, 3000);
 
-// Do this explicitly once, in case the DOM mutations are finished before this script is run:
-//}, 0);
-
 //window.addEventListener("load", loadModules);
 //window.setTimeout(loadModules, 167);
 

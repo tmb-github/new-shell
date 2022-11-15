@@ -1,13 +1,17 @@
 import Head from "../../components/MicroHead";
 import SchemaBreadcrumbs from "../../components/SchemaBreadcrumbs";
+import {default as u} from "../../public/scripts/modules/utilities"; 
 
 // Edit per page:
 import CustomStyle from "../../custom-style/PageDummy3";
+const pageName = "Dummy 3";
+
 // definitions:
 const appName = "Shell";
 const baseHref = "https://localhost:3000/";
-const pageName = "Dummy 3";
-const pageCssName = "dummy-3";
+const pageCssName = u.kebabCase(pageName);
+const dataMjs = u.camelCase(pageName);
+// check this:
 const urlSlug = pageCssName;
 
 // derived definitions:
@@ -32,7 +36,7 @@ const breadcrumbArray = [
 
 const generatedNonce = process.env.generatedNonce;
 
-export default function Dummy3() {
+export default function Main() {
   return (
     <>
       <Head
@@ -42,7 +46,7 @@ export default function Dummy3() {
         nonce={generatedNonce}
       ></Head>
 
-      <main className={mainClasses} data-mjs="dummy3">
+      <main className={mainClasses} data-mjs={dataMjs}>
         <h1 id="main-content" tabIndex="0">
           {pageName}
         </h1>

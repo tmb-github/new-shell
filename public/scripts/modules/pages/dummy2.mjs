@@ -6,7 +6,7 @@ main = function () {
   o = this;
 */
 
-  console.log("home.mjs!!!");
+  console.log("dummy2.mjs");
 };
 
 export default Object.freeze({

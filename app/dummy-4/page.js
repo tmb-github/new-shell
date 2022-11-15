@@ -1,10 +1,10 @@
 import Head from "../../components/MicroHead";
 import SchemaBreadcrumbs from "../../components/SchemaBreadcrumbs";
-import {default as u} from "../../public/scripts/modules/utilities";
+import {default as u} from "../../public/scripts/modules/utilities"; 
 
 // Edit per page:
-import CustomStyle from "../../custom-style/PageDummy1";
-const pageName = "Dummy 1";
+import CustomStyle from "../../custom-style/PageDummy4";
+const pageName = "Dummy 4";
 
 // definitions:
 const appName = "Shell";
@@ -52,18 +52,7 @@ export default function Main() {
         </h1>
         <CustomStyle></CustomStyle>
         <p>
-          Contrary to popular belief, Lorem Ipsum is not simply random text. It
-          has roots in a piece of classical Latin literature from 45 BC, making
-          it over 2000 years old. Richard McClintock, a Latin professor at
-          Hampden-Sydney College in Virginia, looked up one of the more obscure
-          Latin words, consectetur, from a Lorem Ipsum passage, and going
-          through the cites of the word in classical literature, discovered the
-          undoubtable source. Lorem Ipsum comes from sections 1.10.32 and
-          1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
-          Evil) by Cicero, written in 45 BC. This book is a treatise on the
-          theory of ethics, very popular during the Renaissance. The first line
-          of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in
-          section 1.10.32.
+          Morbi quis commodo odio aenean sed. Faucibus nisl tincidunt eget nullam. Ultrices dui sapien eget mi proin. Amet nulla facilisi morbi tempus iaculis urna id. Adipiscing elit ut aliquam purus sit amet. Rhoncus urna neque viverra justo nec ultrices dui sapien. Gravida neque convallis a cras semper auctor neque. Nunc lobortis mattis aliquam faucibus purus in massa tempor. Consectetur lorem donec massa sapien faucibus. Aliquam sem fringilla ut morbi tincidunt augue interdum. Imperdiet nulla malesuada pellentesque elit eget. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus et. Tincidunt praesent semper feugiat nibh sed pulvinar proin.
         </p>
         <SchemaBreadcrumbs
           breadcrumbArray={breadcrumbArray}

@@ -1,18 +1,22 @@
 import PageHead from "../components/PageHead";
 import SchemaBreadcrumbs from "../components/SchemaBreadcrumbs";
+import {default as u} from "../public/scripts/modules/utilities";
 
 // EDIT:
 import CustomStyle from "../custom-style/PageHome";
 const pageName = "Home";
-const pageCssName = "home";
-const pageUrlSlug = "";
+
 // definitions:
 const appName = "Shell";
 const baseHref = "https://localhost:3000/";
+const pageCssName = u.kebabCase(pageName);
+const dataMjs = u.camelCase(pageName);
+// check this:
+const urlSlug = "";
 
 // derived definitions:
 const appNameUC = appName.toUpperCase();
-const canonical = baseHref + pageUrlSlug;
+const canonical = baseHref + urlSlug;
 const mainClasses = "main " + pageCssName;
 const metaDescription = `${pageName} page description for ${appNameUC} application [70 characters are best here].`;
 const title = `${pageName} | Shell`;
@@ -37,7 +41,7 @@ export default function Main() {
         nonce={generatedNonce}
       ></PageHead>
 
-      <main className={mainClasses} data-mjs="home">
+      <main className={mainClasses} data-mjs={dataMjs}>
         <h1 id="main-content" tabIndex="0">
           {pageName}
         </h1>

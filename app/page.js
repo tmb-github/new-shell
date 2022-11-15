@@ -1,13 +1,17 @@
 import Head from "../components/MicroHead";
 import SchemaBreadcrumbs from "../components/SchemaBreadcrumbs";
+import {default as u} from "../public/scripts/modules/utilities"; 
 
 // Edit per page:
 import CustomStyle from "../custom-style/PageHome";
+const pageName = "Home";
+
 // definitions:
 const appName = "Shell";
 const baseHref = "https://localhost:3000/";
-const pageName = "Home";
-const pageCssName = "home";
+const pageCssName = u.kebabCase(pageName);
+const dataMjs = u.camelCase(pageName);
+// check this:
 const urlSlug = "";
 
 // derived definitions:
@@ -27,7 +31,7 @@ const breadcrumbArray = [
 
 const generatedNonce = process.env.generatedNonce;
 
-export default function Home() {
+export default function Main() {
   return (
     <>
       <Head

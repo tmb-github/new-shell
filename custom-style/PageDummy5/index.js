@@ -3,43 +3,43 @@ const CustomStyle = () => {
     <custom-style class="display-none">{`
 /* To 463px (next query overtakes 464px): */
 @media all and (max-width: 464px) {
-	.contact.main {
+	.dummy-5.main {
 		margin: calc(1em + var(--header-height)) 1em 3em 1em;
 	}
 }
 /* From 464px: */
 @media all and (min-width: 464px) {
-	.contact.main {
+	.dummy-5.main {
 		margin: calc(1em + var(--header-height)) auto 3em auto;
 		width: 432px;
 	}
 }
 
-.contact a:link {
+.dummy-5 a:link {
 	background: transparent;
 }
 
-.contact p {
+.dummy-5 p {
 	margin-top: 1em;
 }
 
-.contact h2 {
+.dummy-5 h2 {
 	font-size: 1.5em;
 	margin: .25em 0 0 0;
 	text-align: center;
 }
 
 /*
-.contact h2 > p,
-.contact p ~ p {
+.dummy-5 h2 > p,
+.dummy-5 p ~ p {
 	margin: 0;
 	padding: 0;
 }
 */
 
 /* Limit paragraph width to @62 characters (ch unit wouldn't work here): */
-/* We have to chain .main to .contact to increase the specificity to make the styling work */
-.contact.main p {
+/* We have to chain .main to .dummy-5 to increase the specificity to make the styling work */
+.dummy-5.main p {
 	max-width: 27em;
 }
 

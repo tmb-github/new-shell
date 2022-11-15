@@ -28,6 +28,7 @@ commonEventListeners = function () {
 	var skipToMainContentKeyupListener;
 	var makeTransparentMaskClickable;
 	var closeDrawerOnAnchorClick;
+	var initializeHeaderHeightAndObserver;
 	
 	var fauxPopstate;
 
@@ -56,6 +57,40 @@ commonEventListeners = function () {
 		}
 	};
 */
+
+	initializeHeaderHeightAndObserver = function () {
+
+//		var o;
+		var resizeObserverForHeaderHeight;
+
+//		o = this;
+	// Default to 0; revise immediately in resizeObserver:
+		o.headerHeight = 0;
+
+		resizeObserverForHeaderHeight = new ResizeObserver(function (entries) {
+
+			var rect;
+			var height;
+
+		// We're only observing a single element, so access the first element in
+		// the entries array:
+			rect = entries[0].contentRect;
+
+			height = rect.height;
+
+			if (o.headerHeight !== height) {
+				o.headerHeight = height;
+	//console.log('Current Height : ' + height);
+				o.appendToCSS(':root', '{ --header-height: ' + o.headerHeight + 'px; }');
+			}
+
+		});
+
+	// start observing for resize
+		resizeObserverForHeaderHeight.observe(document.querySelector('.header'));
+
+	};
+
 
 	makeTransparentMaskClickable = function () {
 		var headerTransparentMask;
@@ -618,6 +653,7 @@ commonEventListeners = function () {
 	}
 
 //	highlightMenuItem();
+	initializeHeaderHeightAndObserver();
 	makeTransparentMaskClickable();
 	closeDrawerOnAnchorClick();
 

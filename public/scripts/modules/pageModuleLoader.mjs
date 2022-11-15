@@ -31,11 +31,11 @@ pageModuleLoader = function () {
 
   loadPageModule = function () {
     document.querySelectorAll("MAIN.main").forEach(function (element) {
-      if (element.dataset.mjs) {
+      if (element.dataset.mjs && element.dataset.mjs !== "") {
         // look for "data-[pageName]" on MAIN element, e.g.
         // <main class="main" data-mjs="dummy3">
         // ^ the data-mjs attribute indicates that dummy3.mjs should be loaded for this page!
-        import("./" + element.dataset.mjs + ".mjs")
+        import("./pages/" + element.dataset.mjs + ".mjs")
           .then(function ({ default: object }) {
             assignToModulePropertyOnCommonObject(element.dataset.mjs, object);
           })

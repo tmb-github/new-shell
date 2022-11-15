@@ -1,13 +1,17 @@
 import Head from "../../components/MicroHead";
 import SchemaBreadcrumbs from "../../components/SchemaBreadcrumbs";
+import {default as u} from "../../public/scripts/modules/utilities"; 
 
 // Edit per page:
 import CustomStyle from "../../custom-style/PagePrivacyPolicy";
+const pageName = "Privacy Policy";
+
 // definitions:
 const appName = "Shell";
 const baseHref = "https://localhost:3000/";
-const pageName = "Privacy Policy";
-const pageCssName = "privacy-policy";
+const pageCssName = u.kebabCase(pageName);
+const dataMjs = u.camelCase(pageName);
+// check this:
 const urlSlug = pageCssName;
 
 // derived definitions:
@@ -32,7 +36,7 @@ const breadcrumbArray = [
 
 const generatedNonce = process.env.generatedNonce;
 
-export default function PrivacyPolicy() {
+export default function Main() {
   return (
     <>
       <Head
@@ -42,7 +46,7 @@ export default function PrivacyPolicy() {
         nonce={generatedNonce}
       ></Head>
 
-      <main className={mainClasses}>
+      <main className={mainClasses} data-mjs={dataMjs}>
         <h1 id="main-content" tabIndex="0">
           {pageName}
         </h1>

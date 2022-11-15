@@ -3,8 +3,8 @@ import SchemaBreadcrumbs from "../../components/SchemaBreadcrumbs";
 import {default as u} from "../../public/scripts/modules/utilities";
 
 // Edit per page:
-import CustomStyle from "../../custom-style/PageDummy1";
-const pageName = "Dummy 1";
+import CustomStyle from "../../custom-style/PageDummy5";
+const pageName = "Dummy 5";
 
 // definitions:
 const appName = "Shell";
@@ -52,18 +52,7 @@ export default function Main() {
         </h1>
         <CustomStyle></CustomStyle>
         <p>
-          Contrary to popular belief, Lorem Ipsum is not simply random text. It
-          has roots in a piece of classical Latin literature from 45 BC, making
-          it over 2000 years old. Richard McClintock, a Latin professor at
-          Hampden-Sydney College in Virginia, looked up one of the more obscure
-          Latin words, consectetur, from a Lorem Ipsum passage, and going
-          through the cites of the word in classical literature, discovered the
-          undoubtable source. Lorem Ipsum comes from sections 1.10.32 and
-          1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
-          Evil) by Cicero, written in 45 BC. This book is a treatise on the
-          theory of ethics, very popular during the Renaissance. The first line
-          of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in
-          section 1.10.32.
+          Sagittis purus sit amet volutpat consequat mauris nunc congue nisi. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Pharetra sit amet aliquam id diam. Tellus at urna condimentum mattis pellentesque id nibh tortor. Turpis massa tincidunt dui ut ornare lectus sit amet est. Purus semper eget duis at tellus at. Odio euismod lacinia at quis risus sed vulputate. Scelerisque mauris pellentesque pulvinar pellentesque habitant. Adipiscing commodo elit at imperdiet dui. Ut sem viverra aliquet eget sit amet tellus cras adipiscing. Amet massa vitae tortor condimentum lacinia quis vel eros donec. Morbi quis commodo odio aenean sed adipiscing diam donec.
         </p>
         <SchemaBreadcrumbs
           breadcrumbArray={breadcrumbArray}
