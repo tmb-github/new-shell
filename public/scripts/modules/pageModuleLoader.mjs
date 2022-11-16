@@ -30,6 +30,8 @@ pageModuleLoader = function () {
   };
 
   loadPageModule = function () {
+    //console.log("loadPageModule");
+    observer.disconnect;
     document.querySelectorAll("MAIN.main").forEach(function (element) {
       if (element.dataset.mjs && element.dataset.mjs !== "") {
         // look for "data-[pageName]" on MAIN element, e.g.
@@ -64,9 +66,9 @@ pageModuleLoader = function () {
   };
 
   window.setTimeout(function () {
-    target = document.querySelector("BODY");
+    target = document.querySelector("HTML");
     // this is a live collection - when the node is added the [0] element will be defined
-    elements = target.getElementsByTagName("MAIN");
+    elements = target.getElementsByTagName("HEAD");
     observer = new MutationObserver(callback);
     config = { subtree: true, childList: true };
     observer.observe(target, config);
