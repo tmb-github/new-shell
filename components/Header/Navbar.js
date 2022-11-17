@@ -57,6 +57,14 @@ let propsContact = {
   dataPage: "contact",
   dataHref: "contact",
 };
+let propsDoesNotExist = {
+  name: "Does Not Exist",
+  href: "./does-not-exist",
+  classes: "menu-side-one",
+  dataPage: "does-not-exist",
+  dataHref: "does-not-exist",
+};
+
 let propsAdditionalPages = {
   name: "Additional Pages 1",
   href: "#additional-pages",
@@ -187,6 +195,7 @@ function NewNavList() {
           <TmbLI {...propsDummy6}>dummy 6</TmbLI>
         </TmbUL>
       </TmbLI>
+      <TmbLI {...propsDoesNotExist}>Does Not Exist</TmbLI>
       <TmbLI {...propsContact}>contact</TmbLI>
     </TmbUL>
   );

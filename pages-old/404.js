@@ -3,8 +3,8 @@ import SchemaBreadcrumbs from "../components/SchemaBreadcrumbs";
 import { default as u } from "../public/scripts/modules/utilities";
 
 // EDIT:
-import CustomStyle from "../custom-style/PageDummy1";
-const pageName = "Dummy 1";
+import CustomStyle from "../custom-style/PageError404";
+const pageName = "Error 404";
 
 // definitions:
 const appName = "Shell";
@@ -51,14 +51,8 @@ export default function Main() {
           {pageName}
         </h1>
         <CustomStyle></CustomStyle>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+        <p className="text-align-center">
+          The page you've specified does not exist.
         </p>
         <SchemaBreadcrumbs
           breadcrumbArray={breadcrumbArray}
