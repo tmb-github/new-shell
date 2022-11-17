@@ -667,6 +667,29 @@ commonEventListeners = function () {
 		element.setAttribute('href', window.location.origin + window.location.pathname + '#main-content');
 	});
 
+/* qwer */
+/* To delay the switch from position: fixed to position: absolute in the secondary-ul CSS: */
+// To listen for checked state:
+	document.querySelectorAll('#hamburger').forEach(function (hamburger) {
+		if (!hamburger.classList.contains('hamburger-change-listener')) {
+			hamburger.classList.add('hamburger-change-listener');
+			hamburger.addEventListener('change', function () {
+				if (hamburger.checked) {
+// Hamburger open:
+// In the corresponding CSS, apply a transition-delay of 100ms to NAV to give
+// time for this rule to be appended and rendered:
+					o.appendToCSS(':root', '{ --secondary-ul-position: fixed; }');
+				} else {
+// Hamburger close:
+// The time delay must equal the duration of the translateX transform on the
+// NAV element in the corresponding CSS (280ms):
+					window.setTimeout(function () {
+						o.appendToCSS(':root', '{ --secondary-ul-position: absolute; }');
+					}, 280);
+				}
+			});
+		}
+	});
 
 // See:
 // https://philipwalton.com/articles/idle-until-urgent/
@@ -729,6 +752,18 @@ highlightMenuItem = function () {
 		url += '/';
 	}
 
+// in original site, this is done when MAIN element is ajaxed:
+	document.querySelectorAll('#header-nav ul a').forEach(function (anchor) {
+		if (anchor.getAttribute('href') !== url) {
+			if (anchor.classList.contains('selected')) {
+				anchor.classList.remove('selected');
+				anchor.closest('.secondary-ul')?.classList.remove('selected');
+			}
+		}
+	});
+
+	document.activeElement.blur();
+
 /* qwer */
 // Clear-out .selected on all .secondary-ul ULs:
 	document.querySelectorAll('.secondary-ul').forEach(function (element) {
@@ -749,6 +784,7 @@ highlightMenuItem = function () {
 		} else {
 // THIS IS SPECIFIC TO NEXT.JS -- ORIGINAL SITE DIDN'T NEED THIS:
 			element.classList.remove('selected');
+			element.closest('.secondary-ul')?.classList.add('selected');
 		}
 	});
 
@@ -779,6 +815,7 @@ console.log(window.location.pathname.slice(0, -1));
 
 			document.activeElement.blur();
 */
+
 
 };
 

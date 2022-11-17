@@ -1,6 +1,6 @@
 import Head from "../../components/MicroHead";
 import SchemaBreadcrumbs from "../../components/SchemaBreadcrumbs";
-import {default as u} from "../../public/scripts/modules/utilities";
+import { default as u } from "../../public/scripts/modules/utilities";
 
 // Edit per page:
 import CustomStyle from "../../custom-style/PageDummy5";
@@ -52,7 +52,16 @@ export default function Main() {
         </h1>
         <CustomStyle></CustomStyle>
         <p>
-          Sagittis purus sit amet volutpat consequat mauris nunc congue nisi. Id donec ultrices tincidunt arcu non sodales neque sodales ut. Pharetra sit amet aliquam id diam. Tellus at urna condimentum mattis pellentesque id nibh tortor. Turpis massa tincidunt dui ut ornare lectus sit amet est. Purus semper eget duis at tellus at. Odio euismod lacinia at quis risus sed vulputate. Scelerisque mauris pellentesque pulvinar pellentesque habitant. Adipiscing commodo elit at imperdiet dui. Ut sem viverra aliquet eget sit amet tellus cras adipiscing. Amet massa vitae tortor condimentum lacinia quis vel eros donec. Morbi quis commodo odio aenean sed adipiscing diam donec.
+          Sagittis purus sit amet volutpat consequat mauris nunc congue nisi. Id
+          donec ultrices tincidunt arcu non sodales neque sodales ut. Pharetra
+          sit amet aliquam id diam. Tellus at urna condimentum mattis
+          pellentesque id nibh tortor. Turpis massa tincidunt dui ut ornare
+          lectus sit amet est. Purus semper eget duis at tellus at. Odio euismod
+          lacinia at quis risus sed vulputate. Scelerisque mauris pellentesque
+          pulvinar pellentesque habitant. Adipiscing commodo elit at imperdiet
+          dui. Ut sem viverra aliquet eget sit amet tellus cras adipiscing. Amet
+          massa vitae tortor condimentum lacinia quis vel eros donec. Morbi quis
+          commodo odio aenean sed adipiscing diam donec.
         </p>
         <SchemaBreadcrumbs
           breadcrumbArray={breadcrumbArray}

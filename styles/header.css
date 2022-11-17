@@ -561,6 +561,8 @@ This improves user engagement.
 		top: 12px;
 		right: 12px;
 		margin-right: var(--logo-for-mobile-menu-margin-right);
+		height: 35px;
+		width: 115px;
 	}
 
 /*******************************************************
