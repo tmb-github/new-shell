@@ -52,20 +52,16 @@ export default function Main() {
         </h1>
         <CustomStyle></CustomStyle>
         <p>
-          Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu.
-          Enim eu turpis egestas pretium aenean pharetra magna ac. Ut etiam sit
-          amet nisl purus in mollis nunc sed. Potenti nullam ac tortor vitae
-          purus faucibus. Viverra nam libero justo laoreet. Maecenas sed enim ut
-          sem. Tellus at urna condimentum mattis pellentesque id nibh. Enim ut
-          tellus elementum sagittis vitae et leo duis ut. Amet consectetur
-          adipiscing elit ut aliquam purus sit. Cras semper auctor neque vitae
-          tempus quam. Condimentum lacinia quis vel eros donec ac odio tempor.
-          Enim eu turpis egestas pretium aenean pharetra magna ac. Tellus in
-          metus vulputate eu scelerisque felis imperdiet proin fermentum.
-          Convallis posuere morbi leo urna molestie at elementum eu facilisis.
-          Vel quam elementum pulvinar etiam non quam lacus suspendisse faucibus.
-          Ut lectus arcu bibendum at. Neque gravida in fermentum et sollicitudin
-          ac orci.
+          Sagittis purus sit amet volutpat consequat mauris nunc congue nisi. Id
+          donec ultrices tincidunt arcu non sodales neque sodales ut. Pharetra
+          sit amet aliquam id diam. Tellus at urna condimentum mattis
+          pellentesque id nibh tortor. Turpis massa tincidunt dui ut ornare
+          lectus sit amet est. Purus semper eget duis at tellus at. Odio euismod
+          lacinia at quis risus sed vulputate. Scelerisque mauris pellentesque
+          pulvinar pellentesque habitant. Adipiscing commodo elit at imperdiet
+          dui. Ut sem viverra aliquet eget sit amet tellus cras adipiscing. Amet
+          massa vitae tortor condimentum lacinia quis vel eros donec. Morbi quis
+          commodo odio aenean sed adipiscing diam donec.
         </p>
         <SchemaBreadcrumbs
           breadcrumbArray={breadcrumbArray}

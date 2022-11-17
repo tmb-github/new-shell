@@ -36,7 +36,6 @@ commonEventListeners = function () {
 	o = this;
 
 	mainContentID = "#main-content";
-	skipToMainContentKeyupListener = "skip-to-main-content-keyup-listener";
 
 // For testing and debugging tabbing/entering drawer items:
 // document.body.addEventListener('keyup', function (e) {
@@ -289,14 +288,8 @@ commonEventListeners = function () {
 			) {
 				element.setAttribute("href", window.location.href + mainContentID);
 			}
-
-
-/*
-			if (element.dataset.skipToMainContentKeyupListener !== 'true') {
-				element.setAttribute("data-skip-to-main-content-keyup-listener", 'true');
-*/
-			if (!element.classList.contains(skipToMainContentKeyupListener)) {
-				element.classList.add(skipToMainContentKeyupListener);
+			if (!element.classList.contains('skip-to-main-content-keyup-listener')) {
+				element.classList.add('skip-to-main-content-keyup-listener');
 				element.addEventListener("keyup", function (e) {
 					e.preventDefault();
 					if (e.code === "Enter") {

@@ -1,6 +1,6 @@
 import PageHead from "../components/PageHead";
 import SchemaBreadcrumbs from "../components/SchemaBreadcrumbs";
-import {default as u} from "../public/scripts/modules/utilities";
+import { default as u } from "../public/scripts/modules/utilities";
 
 // EDIT:
 import CustomStyle from "../custom-style/PageContact";
@@ -51,17 +51,93 @@ export default function Main() {
           {pageName}
         </h1>
         <CustomStyle></CustomStyle>
-        <p>
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. The point of
-          using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters, as opposed to using 'Content here, content here', making it
-          look like readable English. Many desktop publishing packages and web
-          page editors now use Lorem Ipsum as their default model text, and a
-          search for 'lorem ipsum' will uncover many web sites still in their
-          infancy. Various versions have evolved over the years, sometimes by
-          accident, sometimes on purpose (injected humour and the like).
-        </p>
+        <h2 className="font-size-125rem">
+          We’d love to hear from you. Please write to us using the form below.
+        </h2>
+        <form className="contact-form">
+          <p className="padding-top-1em">
+            <em>
+              Please complete the fields below, then press Send at the bottom.
+            </em>
+          </p>
+          <div className="input">
+            <label htmlFor="input-sender">
+              <strong>Your name *</strong>
+            </label>
+            <input
+              id="input-sender"
+              type="text"
+              name="sender"
+              title="Please fill out this field"
+              autoComplete="on"
+              required
+            />
+            <br />
+
+            <label htmlFor="input-email">
+              <strong>Your email *</strong>
+            </label>
+            <input
+              id="input-email"
+              type="email"
+              name="email"
+              title="Please fill out this field"
+              autoComplete="on"
+              required
+            />
+            <br />
+
+            <label htmlFor="input-bot" className="bot" aria-hidden="true">
+              <strong>How You Found Us *</strong>
+            </label>
+            <input
+              id="input-bot"
+              className="bot"
+              type="text"
+              name="bot"
+              title="Please fill out this field"
+              autoComplete="off"
+              tabIndex="-1"
+            />
+
+            <label htmlFor="input-subject">
+              <strong>Subject *</strong>
+            </label>
+            <input
+              id="input-subject"
+              type="text"
+              name="subject"
+              title="Please fill out this field"
+              autoComplete="off"
+              required
+            />
+            <br />
+
+            <label htmlFor="input-message">
+              <strong>Message *</strong>
+            </label>
+            <textarea
+              id="input-message"
+              name="message"
+              title="Please fill out this field"
+              autoComplete="off"
+              required
+            ></textarea>
+            <p className="padding-top-1em">* Required fields.</p>
+          </div>
+          <div className="info-text padding-top-1em">
+            <button type="submit" id="junk">
+              Send
+            </button>
+            <p className="sending display-none">
+              <em>Sending message...</em>
+            </p>
+            <p className="sent display-none">
+              <em>Your message is sent.</em>
+            </p>
+          </div>
+        </form>
+
         <SchemaBreadcrumbs
           breadcrumbArray={breadcrumbArray}
         ></SchemaBreadcrumbs>
