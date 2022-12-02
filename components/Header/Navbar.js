@@ -64,9 +64,16 @@ let propsDoesNotExist = {
   dataPage: "does-not-exist",
   dataHref: "does-not-exist",
 };
+let propsTheme = {
+  name: "Theme",
+  href: "./theme",
+  classes: "menu-side-one",
+  dataPage: "theme",
+  dataHref: "theme",
+};
 
 let propsAdditionalPages = {
-  name: "Additional Pages 1",
+  name: "Additional Pages",
   href: "#additional-pages",
   classes: "no-progress-line menu-side-one",
   dataPage: "#",
@@ -136,7 +143,7 @@ function TmbLI(props) {
         />
         <div data-for="side-switcher-1" id="additional-pages-1">
           <span className="switch-to-secondary-ul" tabIndex="-1">
-            Additional Pages 1
+            Additional Pages
           </span>
         </div>
         {props.children}
@@ -152,7 +159,7 @@ function TmbLI(props) {
       >
         <div
           data-for="side-switcher-1"
-          data-switcher-target="Additional Pages 1"
+          data-switcher-target="Additional Pages"
           id="main-menu-1"
           className="return-to-main-menu"
         >
@@ -195,7 +202,8 @@ function NewNavList() {
           <TmbLI {...propsDummy6}>dummy 6</TmbLI>
         </TmbUL>
       </TmbLI>
-      <TmbLI {...propsDoesNotExist}>Does Not Exist</TmbLI>
+      {/*<TmbLI {...propsDoesNotExist}>Does Not Exist</TmbLI>*/}
+      <TmbLI {...propsTheme}>Theme</TmbLI>
       <TmbLI {...propsContact}>contact</TmbLI>
     </TmbUL>
   );
