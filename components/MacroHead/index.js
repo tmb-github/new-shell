@@ -3,6 +3,14 @@ import siteMetadata from "../../data/siteMetadata.js";
 
 // Next.js 13: called by layout.js
 
+/*
+If preloading the fonts, use this:
+<link rel="preload" href="/fonts/Cabin-Roman-400.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+<link rel="preload" href="/fonts/Cabin-Italic-400.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+<link rel="preload" href="/fonts/Cabin-Bold-700.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+<link rel="preload" href="/fonts/Cabin-Bold-Italic-700.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+*/
+
 // The elements in the head that remain constant from page to page:
 //export default async function Head() {
 const Head = () => {

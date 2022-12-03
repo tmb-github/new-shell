@@ -159,9 +159,12 @@ We're no longer using resizeObserver(), and the default value is horizontal-tb, 
 	font-stretch: normal;
 	font-size: 1rem;
 	line-height: 1.5;
-	/* font-family: Cabin, sans-serif; */
-	font-family: var(--cabin-font), sans-serif; 
-
+	font-family: Cabin, sans-serif;
+	/*
+	If using the Next.js font loader (see layout.js),
+	use this:
+	font-family: var(--cabin-font), sans-serif;
+  */
 }
 
 @supports (font-variant-caps: normal) {

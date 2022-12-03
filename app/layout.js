@@ -22,6 +22,15 @@ const cabin = Cabin({
 console.info(cabin);
 */
 
+/*
+
+// This seems to be the correct way to load fonts using the Next.js method.
+// However, it fails to load all fonts.
+// Disengaged 2022-12-03
+// 
+// NB: If used, define the font on the <html> tag, like this:
+// <html lang="en-us" className={cabin.variable}>
+
 import localFont from "@next/font/local";
 const cabin = localFont({
   variable: "--cabin-font",
@@ -55,6 +64,7 @@ const cabin = localFont({
     },
   ],
 });
+*/
 
 // https://github.com/vercel/next.js/discussions/41745
 // className={myFont.className}
@@ -67,9 +77,11 @@ const generatedNonce = process.env.generatedNonce;
 
 // className={cabin.variable}
 
+// <html lang="en-us" className={cabin.variable}>
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en-us" className={cabin.variable}>
+    <html lang="en-us">
       <Head nonce={generatedNonce} />
       <body className="body" data-orientation="initial">
         <Header />
