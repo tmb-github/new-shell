@@ -50,6 +50,7 @@ let propsThemeOne = {
   dataPage: "theme-one",
   dataHref: "theme-one",
 };
+
 let propsThemeTwo = {
   name: "Theme Two",
   href: "./theme/two",
@@ -57,12 +58,29 @@ let propsThemeTwo = {
   dataPage: "theme-two",
   dataHref: "theme-two",
 };
+
 let propsThemeThree = {
   name: "Theme Three",
   href: "./theme/three",
   classes: "menu-side-one",
   dataPage: "theme-three",
   dataHref: "theme-three",
+};
+
+let propsThemeAAA = {
+  name: "Theme AAA",
+  href: "./theme/aaa",
+  classes: "menu-side-one",
+  dataPage: "theme-aaa",
+  dataHref: "theme-aaa",
+};
+
+let propsThemeBBB = {
+  name: "Theme BBB",
+  href: "./theme/bbb",
+  classes: "menu-side-one",
+  dataPage: "theme-bbb",
+  dataHref: "theme-bbb",
 };
 
 function TmbUL(props) {
@@ -91,9 +109,13 @@ function TmbLI(props) {
 function ThemeNavList() {
   return (
     <TmbUL {...propsThemeNavUL}>
+      {/*
       <TmbLI {...propsThemeOne}>One</TmbLI>
       <TmbLI {...propsThemeTwo}>Two</TmbLI>
       <TmbLI {...propsThemeThree}>Three</TmbLI>
+    */}
+      <TmbLI {...propsThemeAAA}>AAA</TmbLI>
+      <TmbLI {...propsThemeBBB}>BBB</TmbLI>
     </TmbUL>
   );
 }
