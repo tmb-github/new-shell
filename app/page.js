@@ -1,9 +1,9 @@
-import Head from "../components/MicroHead";
-import SchemaBreadcrumbs from "../components/SchemaBreadcrumbs";
-import {default as u} from "../public/scripts/modules/utilities"; 
+import Head from "components/MicroHead";
+import SchemaBreadcrumbs from "components/SchemaBreadcrumbs";
+import { default as u } from "public/scripts/modules/utilities";
 
 // Edit per page:
-import CustomStyle from "../custom-style/PageHome";
+import CustomStyle from "custom-style/PageHome";
 const pageName = "Home";
 
 // definitions:

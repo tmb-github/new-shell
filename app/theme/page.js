@@ -1,10 +1,10 @@
-import Head from "../../components/MicroHead";
-import SchemaBreadcrumbs from "../../components/SchemaBreadcrumbs";
-import { default as u } from "../../public/scripts/modules/utilities";
+import Head from "components/MicroHead";
+import SchemaBreadcrumbs from "components/SchemaBreadcrumbs";
+import { default as u } from "public/scripts/modules/utilities";
 import Link from "next/link";
 
 // Edit per page:
-import CustomStyle from "../../custom-style/PageTheme";
+import CustomStyle from "custom-style/PageTheme";
 const pageName = "Theme Listing";
 
 // definitions:

@@ -1,10 +1,10 @@
-import Head from "../components/MicroHead";
-import SchemaBreadcrumbs from "../components/SchemaBreadcrumbs";
-import { default as u } from "../public/scripts/modules/utilities";
+import Head from "components/MicroHead";
+import SchemaBreadcrumbs from "components/SchemaBreadcrumbs";
+import { default as u } from "public/scripts/modules/utilities";
 import { notFound } from "next/navigation";
 
 // Edit per page:
-import CustomStyle from "../custom-style/PageError404";
+import CustomStyle from "custom-style/PageError404";
 const pageName = "Error 404";
 
 // definitions:

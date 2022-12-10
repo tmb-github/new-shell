@@ -1,10 +1,10 @@
 import React from "react";
-import Head from "../../../components/MicroHead";
-import SchemaBreadcrumbs from "../../../components/SchemaBreadcrumbs";
+import Head from "components/MicroHead";
+import SchemaBreadcrumbs from "components/SchemaBreadcrumbs";
 import parse from "html-react-parser";
 
 // Edit per page:
-import CustomStyle from "../../../custom-style/PageTheme";
+import CustomStyle from "custom-style/PageTheme";
 
 // { params, searchParams }
 export default function Main({ params }) {
@@ -44,8 +44,13 @@ export default function Main({ params }) {
 
   const generatedNonce = process.env.generatedNonce;
 
+  // NB: We must use relative parths in import() statements.
+  // We cannot rely on jsconfig.json absolute path to be resolved in those functions:
+
   return import(`./${theme}.mjs`).then(function ({ default: themeObject }) {
     let themeHtml = "";
+    // Use .map(), not .forEach() in Promise.all()
+    // See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import
     return Promise.all(
       themeObject.works.map(function (work) {
         import(`../../works/${work}.mjs`).then(function ({

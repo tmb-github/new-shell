@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Script from "next/script";
-import siteMetadata from "../../data/siteMetadata.js";
+import siteMetadata from "data/siteMetadata.js";
 
 // NB: This component is used in NextJs 12 for the "pages" folder
 // method of routine, not the NextJs 13 "app" folder routing.

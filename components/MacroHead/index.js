@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-head-element */
-import siteMetadata from "../../data/siteMetadata.js";
+import siteMetadata from "data/siteMetadata.js";
 
 // Next.js 13: called by layout.js
 

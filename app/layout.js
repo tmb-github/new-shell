@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-sync-scripts */
 
-import Head from "../components/MacroHead";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import SchemaWebPage from "../components/SchemaWebPage";
-import SchemaPerson from "../components/SchemaPerson";
+import Head from "components/MacroHead";
+import Header from "components/Header";
+import Footer from "components/Footer";
+import SchemaWebPage from "components/SchemaWebPage";
+import SchemaPerson from "components/SchemaPerson";
 
 // The font downloaded by this method does not match the .woff2 cabin font hosted locally:
 // NB: You must NOT use a local @fontface definition if using this method.
@@ -68,7 +68,7 @@ const cabin = localFont({
 
 // https://github.com/vercel/next.js/discussions/41745
 // className={myFont.className}
-import "../styles/individual-imports.css";
+import "styles/individual-imports.css";
 
 //console.info(process.env.generatedNonce);
 const generatedNonce = process.env.generatedNonce;
