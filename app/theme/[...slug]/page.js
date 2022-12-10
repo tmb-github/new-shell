@@ -11,7 +11,11 @@ export default function Main({ params }) {
   const theme = params.slug[0];
   const work = params.slug[1];
 
+  console.log("theme: " + theme);
+  console.log("work: " + work);
+
   const pageName = work ? `${work} | ${theme} | Theme` : `${theme} | Theme`;
+  let pageHeading = work ? `${work}` : `${theme}`;
 
   // definitions:
   const appName = "Shell";
@@ -48,7 +52,10 @@ export default function Main({ params }) {
   // We cannot rely on jsconfig.json absolute path to be resolved in those functions:
 
   return import(`./${theme}.mjs`).then(function ({ default: themeObject }) {
-    let themeHtml = "";
+    let workNav = `<ul>`;
+    let artworkDisplay = `<section class="artwork-display display-noneX"><article class="selected-work"></article></section>`;
+    let jsonStorage = `<section class="artwork-json-storage"><h2 class="screen-reader">JSON scripts (for internal use)</h2>`;
+
     // Use .map(), not .forEach() in Promise.all()
     // See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import
     return Promise.all(
@@ -56,10 +63,16 @@ export default function Main({ params }) {
         import(`../../works/${work}.mjs`).then(function ({
           default: workObject,
         }) {
-          themeHtml += workObject.html;
+          workNav += `<li><a href="${theme}/${work}" class="work-anchor" data-artwork-slug="${work}">${work}</a></li>`;
+          jsonStorage +=
+            `<script type="application/json" class="artwork-json" data-json-index="0" data-artwork-slug="${work}" data-artwork-title="${work}">{"article": "` +
+            workObject.html +
+            `"}</script>`;
         });
       })
     ).then(function () {
+      workNav += `</ul>`;
+      jsonStorage += `</section>`;
       return (
         <>
           <Head
@@ -71,10 +84,12 @@ export default function Main({ params }) {
 
           <main className={mainClasses} data-mjs={dataMjs}>
             <h1 id="main-content" tabIndex="0">
-              {params.slug}
+              {pageHeading}
             </h1>
             <CustomStyle></CustomStyle>
-            {parse(themeHtml)}
+            {parse(workNav)}
+            {parse(artworkDisplay)}
+            {parse(jsonStorage)}
             <SchemaBreadcrumbs
               breadcrumbArray={breadcrumbArray}
             ></SchemaBreadcrumbs>

@@ -51,7 +51,7 @@ const Layout = ({ children }) => (
   <>
     <SiteHead />
     <Header />
-    <Script src="scripts/common.js" strategy="beforeInteractive"></Script>
+    <Script src="/scripts/common.js" strategy="beforeInteractive"></Script>
     {children}
     <Footer />
     <SchemaWebPage />
