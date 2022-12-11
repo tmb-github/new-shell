@@ -408,3 +408,7 @@ TMB: 2021-10-16
 		transform: rotate(360deg);
 	}
 }
+
+.body .header + div {
+	display: unset;
+}

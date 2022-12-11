@@ -26,6 +26,9 @@ o.assignToCommonObject = function (object) {
   });
 };
 
+o.documentClick = false;
+o.backButton = false;
+
 commonRoutines = function () {
   o.fauxPopstate();
   o.customStyle();

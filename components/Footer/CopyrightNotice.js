@@ -4,11 +4,11 @@ const CopyrightNotice = () => {
   return (
     <div className="copyright display-block">
       <p className="internal-links">
-        <Link className="internal-anchor privacy-policy" href="privacy-policy/">
+        <Link className="internal-anchor privacy-policy" href="privacy-policy">
           Privacy Policy
         </Link>{" "}
         |{" "}
-        <Link className="internal-anchor site-map" href="site-map/">
+        <Link className="internal-anchor site-map" href="site-map">
           Site Map
         </Link>{" "}
       </p>

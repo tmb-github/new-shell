@@ -87,6 +87,21 @@ let propsMainMenu = {
   dataHref: "#",
 };
 
+let propsThemeAAA = {
+  name: "Theme AAA",
+  href: "./theme/aaa",
+  classes: "menu-side-two",
+  dataPage: "theme",
+  dataHref: "theme/aaa",
+};
+let propsThemeBBB = {
+  name: "Theme BBB",
+  href: "./theme/bbb",
+  classes: "menu-side-two",
+  dataPage: "theme",
+  dataHref: "theme/bbb",
+};
+
 let propsPrimaryUL = {
   classes: "primary-ul",
 };
@@ -196,14 +211,12 @@ function NewNavList() {
       <TmbLI {...propsAdditionalPages}>
         <TmbUL {...propsSecondaryUL}>
           <TmbLI {...propsMainMenu}>Main Menu</TmbLI>
-          <TmbLI {...propsDummy3}>dummy 3</TmbLI>
-          <TmbLI {...propsDummy4}>dummy 4</TmbLI>
-          <TmbLI {...propsDummy5}>dummy 5</TmbLI>
-          <TmbLI {...propsDummy6}>dummy 6</TmbLI>
+          <TmbLI {...propsThemeAAA}>Theme AAA</TmbLI>
+          <TmbLI {...propsThemeBBB}>Theme BBB</TmbLI>
         </TmbUL>
       </TmbLI>
       {/*<TmbLI {...propsDoesNotExist}>Does Not Exist</TmbLI>*/}
-      <TmbLI {...propsTheme}>Theme</TmbLI>
+      {/*<TmbLI {...propsTheme}>Theme</TmbLI>*/}
       <TmbLI {...propsContact}>contact</TmbLI>
     </TmbUL>
   );

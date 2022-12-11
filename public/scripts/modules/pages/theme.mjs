@@ -12,10 +12,20 @@ main = function () {
 };
 
 eventListeners = function () {
+  // anchors:
   document.querySelectorAll(".theme .work-anchor").forEach(function (element) {
     if (!element.classList.contains("work-anchor-click-listener")) {
       element.addEventListener("click", function (e) {
+        let parts = e.target.href.split("/");
+        let theme = parts[parts.length - 2];
+        let work = parts[parts.length - 1];
+
         e.preventDefault();
+        window.history.pushState(
+          {},
+          document.title,
+          "/theme/" + theme + "/" + work
+        );
         document
           .querySelectorAll(".theme .artwork-json-storage script")
           .forEach(function (script) {

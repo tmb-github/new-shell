@@ -10,10 +10,10 @@ import CustomStyle from "custom-style/PageTheme";
 export default function Main({ params }) {
   const theme = params.slug[0];
   const work = params.slug[1];
-
+  /*
   console.log("theme: " + theme);
   console.log("work: " + work);
-
+*/
   const pageName = work ? `${work} | ${theme} | Theme` : `${theme} | Theme`;
   let pageHeading = work ? `${work}` : `${theme}`;
 
@@ -52,9 +52,13 @@ export default function Main({ params }) {
   // We cannot rely on jsconfig.json absolute path to be resolved in those functions:
 
   return import(`./${theme}.mjs`).then(function ({ default: themeObject }) {
-    let workNav = `<ul>`;
-    let artworkDisplay = `<section class="artwork-display display-noneX"><article class="selected-work"></article></section>`;
-    let jsonStorage = `<section class="artwork-json-storage"><h2 class="screen-reader">JSON scripts (for internal use)</h2>`;
+    // work is redefined below, so save it here:
+    let displayWork = work;
+    let displayWorkHtml = "";
+
+    let workNav = `<ul className="text-align-center">`;
+
+    let jsonStorage = `<section className="artwork-json-storage"><h2 className="screen-reader">JSON scripts (for internal use)</h2>`;
 
     // Use .map(), not .forEach() in Promise.all()
     // See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import
@@ -63,16 +67,20 @@ export default function Main({ params }) {
         import(`../../works/${work}.mjs`).then(function ({
           default: workObject,
         }) {
-          workNav += `<li><a href="${theme}/${work}" class="work-anchor" data-artwork-slug="${work}">${work}</a></li>`;
+          workNav += `<li className="display-inline"><a href="${theme}/${work}" className="work-anchor" data-artwork-slug="${work}">${work}</a></li>`;
           jsonStorage +=
-            `<script type="application/json" class="artwork-json" data-json-index="0" data-artwork-slug="${work}" data-artwork-title="${work}">{"article": "` +
+            `<script type="application/json" className="artwork-json" data-json-index="0" data-artwork-slug="${work}" data-artwork-title="${work}">{"article": "` +
             workObject.html +
             `"}</script>`;
+          if (work === displayWork) {
+            displayWorkHtml = workObject.html;
+          }
         });
       })
     ).then(function () {
       workNav += `</ul>`;
       jsonStorage += `</section>`;
+      let artworkDisplay = `<section className="artwork-display display-noneX"><article className="selected-work">${displayWorkHtml}</article></section>`;
       return (
         <>
           <Head
@@ -83,11 +91,28 @@ export default function Main({ params }) {
           ></Head>
 
           <main className={mainClasses} data-mjs={dataMjs}>
-            <h1 id="main-content" tabIndex="0">
-              {pageHeading}
+            <h1 tabIndex="-1" className="screen-reader">
+              Theme Navigation and Display
             </h1>
+            <section className="theme-display">
+              <h2 className="theme-title" tabIndex="0" id="main-content">
+                {theme}
+              </h2>
+              <nav
+                className="theme-nav"
+                aria-labelledby="image-based-artwork-navigation"
+              >
+                <h3
+                  tabIndex="-1"
+                  className="screen-reader"
+                  id="image-based-artwork-navigation"
+                >
+                  Image-based Artwork Navigation
+                </h3>
+                {parse(workNav)}
+              </nav>
+            </section>
             <CustomStyle></CustomStyle>
-            {parse(workNav)}
             {parse(artworkDisplay)}
             {parse(jsonStorage)}
             <SchemaBreadcrumbs

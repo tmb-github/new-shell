@@ -485,6 +485,10 @@ To center a div inside a div:
 	display: block;
 }
 
+.display-inline {
+	display: inline;
+}
+
 .display-inline-block {
 	display: inline-block;
 }
@@ -620,6 +624,9 @@ To center a div inside a div:
 	font-weight: bold;
 }
 
+.text-align-center {
+	text-align: center;
+}
 
 /* Mobile */
 /* To 759px (next query overtakes 760px): */
