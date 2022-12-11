@@ -642,24 +642,17 @@ commonEventListeners = function () {
   initializeHeaderHeightAndObserver();
   makeTransparentMaskClickable();
   closeDrawerOnAnchorClick();
+
   /*
-  document.addEventListener("click", function () {
-    console.log("document click");
-    o.documentClick = true;
-    o.backButton = false;
-  });
- */
-  // This event is issued on backbutton...a feature of Nextjs!
-  window.addEventListener("popstate", function () {
+// This event is issued on backbutton...a feature of Nextjs!
+// Normally, a combination of popstate on window and a non-document-click means a backbutton event:
+window.addEventListener("popstate", function () {
     console.log("backbutton");
   });
+*/
+
   window.addEventListener("fauxPopstate", function () {
-    window.setTimeout(function () {
-      highlightMenuItem();
-      //o.backButton = !o.documentClick;
-      //o.documentClick = false;
-      //window.dispatchEvent(new Event("backButton"));
-    }, 0);
+    window.setTimeout(highlightMenuItem, 0);
   });
   // Run this once now to ensure first page opened is highlighted:
   highlightMenuItem();

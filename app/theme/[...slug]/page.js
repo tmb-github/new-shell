@@ -2,6 +2,7 @@ import React from "react";
 import Head from "components/MicroHead";
 import SchemaBreadcrumbs from "components/SchemaBreadcrumbs";
 import parse from "html-react-parser";
+import Link from "next/link";
 
 // Edit per page:
 import CustomStyle from "custom-style/PageTheme";
@@ -55,19 +56,29 @@ export default function Main({ params }) {
     // work is redefined below, so save it here:
     let displayWork = work;
     let displayWorkHtml = "";
-
-    let workNav = `<ul className="text-align-center">`;
+    let workNav = [];
 
     let jsonStorage = `<section className="artwork-json-storage"><h2 className="screen-reader">JSON scripts (for internal use)</h2>`;
 
     // Use .map(), not .forEach() in Promise.all()
     // See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import
     return Promise.all(
-      themeObject.works.map(function (work) {
+      themeObject.works.map(function (work, index) {
         import(`../../works/${work}.mjs`).then(function ({
           default: workObject,
         }) {
-          workNav += `<li className="display-inline"><a href="${theme}/${work}" className="work-anchor" data-artwork-slug="${work}">${work}</a></li>`;
+          workNav.push(
+            <li className="display-inline" key={work + index}>
+              <Link
+                className="display-inline work-anchor"
+                href={"/theme/" + theme + "/" + work}
+                data-artwork-slug={work}
+              >
+                {work}
+              </Link>
+            </li>
+          );
+
           jsonStorage +=
             `<script type="application/json" className="artwork-json" data-json-index="0" data-artwork-slug="${work}" data-artwork-title="${work}">{"article": "` +
             workObject.html +
@@ -78,7 +89,6 @@ export default function Main({ params }) {
         });
       })
     ).then(function () {
-      workNav += `</ul>`;
       jsonStorage += `</section>`;
       let artworkDisplay = `<section className="artwork-display display-noneX"><article className="selected-work">${displayWorkHtml}</article></section>`;
       return (
@@ -109,7 +119,7 @@ export default function Main({ params }) {
                 >
                   Image-based Artwork Navigation
                 </h3>
-                {parse(workNav)}
+                <ul className="text-align-center">{workNav}</ul>
               </nav>
             </section>
             <CustomStyle></CustomStyle>
