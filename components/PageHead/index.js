@@ -1,5 +1,6 @@
 import Head from "next/head";
 
+// Used in Next.js 12 only???
 // Just the elements in the head that change from page to page:
 
 const PageHead = ({ canonical, metaDescription, title }) => {
@@ -10,6 +11,7 @@ const PageHead = ({ canonical, metaDescription, title }) => {
   return (
     <Head>
       <title>{title}</title>
+      <link rel="canonical" href={canonical}></link>
       <meta name="description" content={metaDescription} key="description" />
       <meta
         name="twitter:description"

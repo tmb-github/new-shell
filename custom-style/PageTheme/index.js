@@ -130,7 +130,8 @@ const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeig
 */
 
 .theme .theme-display h2 {
-	margin: calc(var(--header-height) + 12px) 0 6px 0;
+	/* margin: calc(var(--header-height) + 12px) 0 6px 0; */
+	margin: 12px 0 6px 0;
 	font-size: 1.5rem;
 	font-style: italic;
 	letter-spacing: .15rem;

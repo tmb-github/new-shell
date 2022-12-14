@@ -1,7 +1,9 @@
+// Next.js 13: The elements in the head that change from page to page:
 export default async function Head({ canonical, metaDescription, title }) {
   return (
     <>
       <title key="title">{title}</title>
+      <link rel="canonical" href={canonical}></link>
       <meta name="description" content={metaDescription} key="description" />
       <meta
         name="twitter:description"

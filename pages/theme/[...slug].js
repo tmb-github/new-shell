@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PageHead from "components/PageHead";
 import SchemaBreadcrumbs from "components/SchemaBreadcrumbs";
-import parse from "html-react-parser";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 // Edit per page:
 import CustomStyle from "custom-style/PageTheme";
@@ -24,20 +22,76 @@ export default function Main() {
   const [workNav, setWorkNav] = useState([]);
   const [jsonStorage, setJsonStorage] = useState([]);
   const [artworkDisplay, setArtworkDisplay] = useState([]);
-  /*
-  const router = useRouter();
-  const urlParts = router.asPath.split("/").reverse();
-  const theme = urlParts[2] === "theme" ? urlParts[1] : urlParts[0];
-  const work = urlParts[2] === "theme" ? urlParts[0] : "";
-*/
+  const [windowInfo, setWindowInfo] = useState([]);
 
-  const theme = "aaa";
-  const urlWork = "one";
+  useEffect(() => {
+    const workNavTemp = [];
+    const jsonStorageTemp = [];
+    const artworkDisplayTemp = [];
+    const windowInfoTemp = [];
+
+    const urlParts = window.location.href.split("/").reverse();
+    const theme = urlParts[2] === "theme" ? urlParts[1] : urlParts[0];
+    const urlWork = urlParts[2] === "theme" ? urlParts[0] : "";
+    const displayWork = urlWork;
+    windowInfoTemp.push(theme, urlWork);
+
+    //console.log(theme);
+    //console.log(urlWork);
+
+    import(`./${theme}.mjs`).then(function ({ default: themeObject }) {
+      return Promise.all(
+        themeObject.works.map(function (work, index) {
+          import(`../../works/${work}.mjs`).then(function ({
+            default: workObject,
+          }) {
+            workNavTemp.push(
+              <li className="display-inline" key={work + index}>
+                <Link
+                  className="display-inline work-anchor"
+                  href={"/theme/" + theme + "/" + work}
+                  data-artwork-slug={work}
+                >
+                  {work}
+                </Link>
+              </li>
+            );
+
+            jsonStorageTemp.push(
+              <script
+                type="application/json"
+                className="artwork-json"
+                data-json-index="0"
+                data-artwork-slug={work}
+                data-artwork-title={work}
+                key={"json" + work + index}
+              >
+                {`{"article": "${workObject.html}"}`}
+              </script>
+            );
+
+            if (!artworkDisplayTemp.length || work === displayWork) {
+              artworkDisplayTemp[0] = workObject.html;
+            }
+          });
+        })
+      ).then(() => {
+        //window.setTimeout(function () {
+        setWorkNav(workNavTemp);
+        setJsonStorage(jsonStorageTemp);
+        setArtworkDisplay(artworkDisplayTemp);
+        setWindowInfo(windowInfoTemp);
+        //}, 0);
+      });
+    });
+  });
+
+  const theme = windowInfo[0];
+  const urlWork = windowInfo[1];
 
   const pageName = urlWork
     ? `${urlWork} | ${theme} | Theme`
     : `${theme} | Theme`;
-  const pageHeading = urlWork ? `${urlWork}` : `${theme}`;
 
   const metaDescription = `${pageName} page description for ${appNameUC} application [70 characters are best here].`;
   const title = `${pageName} | Shell`;
@@ -54,67 +108,6 @@ export default function Main() {
       imgUrl: `${baseHref}images/head/shell-115x35.jpg`,
     },
   ];
-
-  //console.log("theme: " + theme);
-  //console.log("urlWork: " + urlWork);
-  let displayWork = urlWork;
-  useEffect(() => {
-    //const urlParts = window.location.href.split("/").reverse();
-
-    const workNavTemp = [];
-    const jsonStorageTemp = [];
-    const artworkDisplayTemp = [];
-
-    import(`./${theme}.mjs`).then(function ({ default: themeObject }) {
-      return Promise.all(
-        themeObject.works.map(function (work, index) {
-          import(`../../works/${work}.mjs`).then(function ({
-            default: workObject,
-          }) {
-            //workNavTemp.push([theme, work, workObject.html]);
-            workNavTemp.push(
-              <li className="display-inline" key={work + index}>
-                <Link
-                  className="display-inline work-anchor"
-                  href={"/theme/" + theme + "/" + work}
-                  data-artwork-slug={work}
-                >
-                  {work}
-                </Link>
-              </li>
-            );
-            jsonStorageTemp.push(
-              <script
-                type="application/json"
-                className="artwork-json"
-                data-json-index="0"
-                data-artwork-slug={work}
-                data-artwork-title={work}
-                key={"json" + work + index}
-              >
-                {`{"article": "${workObject.html}"}`}
-              </script>
-            );
-
-            if (!artworkDisplayTemp.length) {
-              artworkDisplayTemp[0] = workObject.html;
-            }
-            if (work === displayWork) {
-              artworkDisplayTemp[0] = workObject.html;
-            }
-
-            //artworkDisplayTemp.push(workObject.html);
-          });
-        })
-      ).then(() => {
-        window.setTimeout(function () {
-          setWorkNav(workNavTemp);
-          setJsonStorage(jsonStorageTemp);
-          setArtworkDisplay(artworkDisplayTemp);
-        }, 50);
-      });
-    });
-  }, []);
 
   return (
     <>
@@ -147,15 +140,15 @@ export default function Main() {
           </nav>
         </section>
         <CustomStyle></CustomStyle>
-        <section className="artwork-json-storage">
-          <h2 className="screen-reader">JSON scripts (for internal use)</h2>
-          {jsonStorage}
-        </section>
         <section className="artwork-display">
           <article
             className="selected-work"
             dangerouslySetInnerHTML={{ __html: artworkDisplay[0] }}
           ></article>
+        </section>
+        <section className="artwork-json-storage">
+          <h2 className="screen-reader">JSON scripts (for internal use)</h2>
+          {jsonStorage}
         </section>
         <SchemaBreadcrumbs
           breadcrumbArray={breadcrumbArray}

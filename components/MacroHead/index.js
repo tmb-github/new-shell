@@ -11,7 +11,7 @@ If preloading the fonts, use this:
 <link rel="preload" href="/fonts/Cabin-Bold-Italic-700.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
 */
 
-// The elements in the head that remain constant from page to page:
+// Next.js 13: The elements in the head that remain constant from page to page:
 //export default async function Head() {
 const Head = () => {
   return (

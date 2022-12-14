@@ -3,70 +3,70 @@ import Image from "next/image";
 
 let propsHome = {
   name: "Home",
-  href: "./",
+  href: "/",
   classes: "menu-side-one",
   dataPage: "home",
   dataHref: "home",
 };
 let propsDummy1 = {
   name: "Dummy 1",
-  href: "./dummy-1",
+  href: "/dummy-1",
   classes: "menu-side-one",
   dataPage: "dummy-1",
   dataHref: "dummy-1",
 };
 let propsDummy2 = {
   name: "Dummy 2",
-  href: "./dummy-2",
+  href: "/dummy-2",
   classes: "menu-side-one",
   dataPage: "dummy-2",
   dataHref: "dummy-2",
 };
 let propsDummy3 = {
   name: "Dummy 3",
-  href: "./dummy-3",
+  href: "/dummy-3",
   classes: "menu-side-one",
   dataPage: "dummy-3",
   dataHref: "dummy-3",
 };
 let propsDummy4 = {
   name: "Dummy 4",
-  href: "./dummy-4",
+  href: "/dummy-4",
   classes: "menu-side-two",
   dataPage: "dummy-4",
   dataHref: "dummy-4",
 };
 let propsDummy5 = {
   name: "Dummy 5",
-  href: "./dummy-5",
+  href: "/dummy-5",
   classes: "menu-side-two",
   dataPage: "dummy-5",
   dataHref: "dummy-5",
 };
 let propsDummy6 = {
   name: "Dummy 6",
-  href: "./dummy-6",
+  href: "/dummy-6",
   classes: "menu-side-two",
   dataPage: "dummy-6",
   dataHref: "dummy-6",
 };
 let propsContact = {
   name: "Contact",
-  href: "./contact",
+  href: "/contact",
   classes: "menu-side-one orange ripple",
   dataPage: "contact",
   dataHref: "contact",
 };
 let propsDoesNotExist = {
   name: "Does Not Exist",
-  href: "./does-not-exist",
+  href: "/does-not-exist",
   classes: "menu-side-one",
   dataPage: "does-not-exist",
   dataHref: "does-not-exist",
 };
 let propsTheme = {
   name: "Theme",
-  href: "./theme",
+  href: "/theme",
   classes: "menu-side-one",
   dataPage: "theme",
   dataHref: "theme",
@@ -89,14 +89,14 @@ let propsMainMenu = {
 
 let propsThemeAAA = {
   name: "Theme AAA",
-  href: "./theme/aaa",
+  href: "/theme/aaa",
   classes: "menu-side-two",
   dataPage: "theme",
   dataHref: "theme/aaa",
 };
 let propsThemeBBB = {
   name: "Theme BBB",
-  href: "./theme/bbb",
+  href: "/theme/bbb",
   classes: "menu-side-two",
   dataPage: "theme",
   dataHref: "theme/bbb",
@@ -115,7 +115,7 @@ function TmbUL(props) {
 
 function TmbLI(props) {
   let component;
-  if (props.href === "./") {
+  if (props.href === "/") {
     component = (
       <li
         key={props.name}
