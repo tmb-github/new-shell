@@ -52,6 +52,7 @@ export default function Main({ params }) {
   // NB: We must use relative parths in import() statements.
   // We cannot rely on jsconfig.json absolute path to be resolved in those functions:
 
+  // Get the theme.mjs, which will hold an array of the works in the theme:
   return import(`./${theme}.mjs`).then(function ({ default: themeObject }) {
     // work is redefined below, so save it here:
     let displayWork = work;
@@ -64,7 +65,7 @@ export default function Main({ params }) {
     // See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import
     return Promise.all(
       themeObject.works.map(function (work, index) {
-        import(`../../works/${work}.mjs`).then(function ({
+        import(`../../../works/${work}.mjs`).then(function ({
           default: workObject,
         }) {
           workNav.push(
