@@ -23,16 +23,29 @@ export default function Main() {
   const [jsonStorage, setJsonStorage] = useState([]);
   const [artworkDisplay, setArtworkDisplay] = useState([]);
   const [windowInfo, setWindowInfo] = useState([]);
-  const [windowLocationHref, setWindowLocationHref] = window.location.href;
+  // If navigating directly to this page, we cannot use window.location.href
+  // If navigating here from a different page, window object will be available:
+  let href = typeof window === "undefined" ? "" : window.location.href;
+  const [windowLocationHref, setWindowLocationHref] = useState(href); //useState([]);
 
+  // set to true to log info to console
+  let testing = true;
+
+  // Update windowLocationHref if the URL has changed
+  // This will trigger useEffect()
   useEffect(() => {
-    if (window.location.href !== windowLocationHref) {
+    if (windowLocationHref !== window.location.href) {
+      if (testing) {
+        console.log(window.location.href);
+      }
       setWindowLocationHref(window.location.href);
     }
   });
 
   useEffect(() => {
-    console.log("useEffect-2");
+    if (testing) {
+      console.log("useEffect: imports");
+    }
     const workNavTemp = [];
     const jsonStorageTemp = [];
     const artworkDisplayTemp = [];
@@ -44,28 +57,17 @@ export default function Main() {
     const displayWork = urlWork;
 
     windowInfoTemp.push(theme, urlWork);
-    /*
-    // const promises = await fruitsToGet.map(async fruit => {
-    const mapLoop = async () => {
-      const modulePromises = await import(`./${theme}.mjs`).then(
-        ({ default: themeObject }) => {
-          return themeObject;
-        }
-      );
-      //let x = await import(`./${theme}.mjs`).then(({ default: themeObject }) => {
-      //  return themeObject;
-      //});
-      console.log(modulePromises);
-    };
-*/
+
     import(`./${theme}.mjs`).then(({ default: themeObject }) => {
-      console.log("import");
       Promise.all(
-        themeObject.works.map(function (work, index) {
-          import(`../../works/${work}.mjs`).then(function ({
+        themeObject.works.map(async function (work, index) {
+          // we must use await here to ensure the works are returned in order
+          return await import(`../../works/${work}.mjs`).then(function ({
             default: workObject,
           }) {
-            console.log(work);
+            if (testing) {
+              console.log("useEffect: " + work);
+            }
             workNavTemp.push(
               <li className="display-inline" key={work + index}>
                 <Link
@@ -96,13 +98,10 @@ export default function Main() {
           });
         })
       ).then(() => {
-        console.log("setTimeout");
-        setTimeout(function () {
-          setWorkNav(workNavTemp);
-          setJsonStorage(jsonStorageTemp);
-          setArtworkDisplay(artworkDisplayTemp);
-          setWindowInfo(windowInfoTemp);
-        }, 100);
+        setWorkNav(workNavTemp);
+        setJsonStorage(jsonStorageTemp);
+        setArtworkDisplay(artworkDisplayTemp);
+        setWindowInfo(windowInfoTemp);
       });
     });
   }, [windowLocationHref]);
@@ -130,7 +129,9 @@ export default function Main() {
     },
   ];
 
-  console.log("return");
+  if (testing) {
+    console.log("return");
+  }
   return (
     <>
       <PageHead
