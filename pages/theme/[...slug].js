@@ -23,13 +23,16 @@ export default function Main() {
   const [jsonStorage, setJsonStorage] = useState([]);
   const [artworkDisplay, setArtworkDisplay] = useState([]);
   const [windowInfo, setWindowInfo] = useState([]);
-  const [windowLocationHref, setWindowLocationHref] = useState([]);
+  const [windowLocationHref, setWindowLocationHref] = window.location.href;
 
   useEffect(() => {
-    setWindowLocationHref(window.location.href);
+    if (window.location.href !== windowLocationHref) {
+      setWindowLocationHref(window.location.href);
+    }
   });
 
   useEffect(() => {
+    console.log("useEffect-2");
     const workNavTemp = [];
     const jsonStorageTemp = [];
     const artworkDisplayTemp = [];
@@ -41,13 +44,28 @@ export default function Main() {
     const displayWork = urlWork;
 
     windowInfoTemp.push(theme, urlWork);
-
+    /*
+    // const promises = await fruitsToGet.map(async fruit => {
+    const mapLoop = async () => {
+      const modulePromises = await import(`./${theme}.mjs`).then(
+        ({ default: themeObject }) => {
+          return themeObject;
+        }
+      );
+      //let x = await import(`./${theme}.mjs`).then(({ default: themeObject }) => {
+      //  return themeObject;
+      //});
+      console.log(modulePromises);
+    };
+*/
     import(`./${theme}.mjs`).then(({ default: themeObject }) => {
+      console.log("import");
       Promise.all(
         themeObject.works.map(function (work, index) {
           import(`../../works/${work}.mjs`).then(function ({
             default: workObject,
           }) {
+            console.log(work);
             workNavTemp.push(
               <li className="display-inline" key={work + index}>
                 <Link
@@ -78,6 +96,7 @@ export default function Main() {
           });
         })
       ).then(() => {
+        console.log("setTimeout");
         setTimeout(function () {
           setWorkNav(workNavTemp);
           setJsonStorage(jsonStorageTemp);
@@ -111,6 +130,7 @@ export default function Main() {
     },
   ];
 
+  console.log("return");
   return (
     <>
       <PageHead
