@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import PageHead from "components/PageHead";
 import SchemaBreadcrumbs from "components/SchemaBreadcrumbs";
 import Link from "next/link";
-//import { useLocation } from "react-router-dom";
 
 // Edit per page:
 import CustomStyle from "custom-style/PageTheme";
@@ -26,19 +25,11 @@ export default function Main() {
   const [windowInfo, setWindowInfo] = useState([]);
   const [windowLocationHref, setWindowLocationHref] = useState([]);
 
-  let timeoutID;
-
-  function clickCallback(window) {
-    //console.log("clickCallback");
-    setWindowLocationHref(window.location.href);
-  }
   useEffect(() => {
-    //console.log(window.location.href);
     setWindowLocationHref(window.location.href);
   });
 
   useEffect(() => {
-    //console.log("useEffect");
     const workNavTemp = [];
     const jsonStorageTemp = [];
     const artworkDisplayTemp = [];
@@ -53,62 +44,40 @@ export default function Main() {
 
     import(`./${theme}.mjs`).then(({ default: themeObject }) => {
       Promise.all(
-        themeObject.works.map(function (work) {
+        themeObject.works.map(function (work, index) {
           import(`../../works/${work}.mjs`).then(function ({
             default: workObject,
           }) {
-            workNavTemp.push([theme, work]);
-
-            /*
-          workNavTemp.push(
-            <li className="display-inline" key={work + index}>
-              <Link
-                className="display-inline work-anchor"
-                href={"/theme/" + theme + "/" + work}
+            workNavTemp.push(
+              <li className="display-inline" key={work + index}>
+                <Link
+                  className="display-inline work-anchor"
+                  href={"/theme/" + theme + "/" + work}
+                  data-artwork-slug={work}
+                >
+                  {work}
+                </Link>
+              </li>
+            );
+            jsonStorageTemp.push(
+              <script
+                type="application/json"
+                className="artwork-json"
+                data-json-index="0"
                 data-artwork-slug={work}
+                data-artwork-title={work}
+                key={"json" + work + index}
               >
-                {work}
-              </Link>
-            </li>
-          );
-          */
+                {`{"article": "${workObject.html}"}`}
+              </script>
+            );
 
-            jsonStorageTemp.push([work, workObject]);
-
-            /*
-          jsonStorageTemp.push(
-            <script
-              type="application/json"
-              className="artwork-json"
-              data-json-index="0"
-              data-artwork-slug={work}
-              data-artwork-title={work}
-              key={"json" + work + index}
-            >
-              {`{"article": "${workObject.html}"}`}
-            </script>
-          );
-          */
             if (!artworkDisplayTemp.length || work === displayWork) {
               artworkDisplayTemp[0] = workObject.html;
             }
           });
         })
       ).then(() => {
-        //console.log("set values");
-        /*
-        if (
-          !document
-            .querySelector("MAIN")
-            .classList.contains("popstate-listener")
-        ) {
-          document.querySelector("MAIN").classList.add("popstate-listener");
-          window.addEventListener("popstate", function (element) {
-            console.log("popstate");
-            setWindowLocationHref(window.location.href);
-          });
-        }
-        */
         setTimeout(function () {
           setWorkNav(workNavTemp);
           setJsonStorage(jsonStorageTemp);
@@ -117,15 +86,8 @@ export default function Main() {
         }, 100);
       });
     });
-    //}, 0);
-    //};
-
-    // call the function
-    //fetchData()
-    // make sure to catch any error
-    //  .catch(console.error);
   }, [windowLocationHref]);
-  //}, []);
+
   const theme = windowInfo[0];
   const urlWork = windowInfo[1];
 
@@ -149,8 +111,6 @@ export default function Main() {
     },
   ];
 
-  /*return <>Hello</>;*/
-  //console.log("return");
   return (
     <>
       <PageHead
@@ -179,24 +139,7 @@ export default function Main() {
             >
               Image-based Artwork Navigation
             </h3>
-            <ul className="text-align-center">
-              {workNav.map(function ([theme, work], index) {
-                return (
-                  <li className="display-inline" key={work + index}>
-                    <Link
-                      className="display-inline work-anchor"
-                      href={"/theme/" + theme + "/" + work}
-                      data-artwork-slug={work}
-                      onClick={() => {
-                        clickCallback(window);
-                      }}
-                    >
-                      {work}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+            <ul className="text-align-center">{workNav}</ul>
           </nav>
         </section>
         <CustomStyle></CustomStyle>
@@ -208,21 +151,7 @@ export default function Main() {
         </section>
         <section className="artwork-json-storage">
           <h2 className="screen-reader">JSON scripts (for internal use)</h2>
-
-          {jsonStorage.map(function ([work, workObject], index) {
-            return (
-              <script
-                type="application/json"
-                className="artwork-json"
-                data-json-index="0"
-                data-artwork-slug={work}
-                data-artwork-title={work}
-                key={"json" + work + index}
-              >
-                {`{"article": "${workObject.html}"}`}
-              </script>
-            );
-          })}
+          {jsonStorage}
         </section>
         <SchemaBreadcrumbs
           breadcrumbArray={breadcrumbArray}
