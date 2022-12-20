@@ -44,7 +44,7 @@ export default function Main() {
 
   useEffect(() => {
     if (testing) {
-      console.log("useEffect: imports");
+      console.log("useEffect");
     }
     const workNavTemp = [];
     const jsonStorageTemp = [];
@@ -55,55 +55,90 @@ export default function Main() {
     const theme = urlParts[2] === "theme" ? urlParts[1] : urlParts[0];
     const urlWork = urlParts[2] === "theme" ? urlParts[0] : "";
     const displayWork = urlWork;
-
+    if (testing) {
+      console.log("displayWork: " + displayWork);
+    }
     windowInfoTemp.push(theme, urlWork);
 
-    import(`./${theme}.mjs`).then(({ default: themeObject }) => {
-      Promise.all(
-        themeObject.works.map(async function (work, index) {
-          // we must use await here to ensure the works are returned in order
-          return await import(`../../works/${work}.mjs`).then(function ({
-            default: workObject,
-          }) {
-            if (testing) {
-              console.log("useEffect: " + work);
-            }
-            workNavTemp.push(
-              <li className="display-inline" key={work + index}>
-                <Link
-                  className="display-inline work-anchor"
-                  href={"/theme/" + theme + "/" + work}
-                  data-artwork-slug={work}
-                >
-                  {work}
-                </Link>
-              </li>
-            );
-            jsonStorageTemp.push(
-              <script
-                type="application/json"
-                className="artwork-json"
-                data-json-index="0"
-                data-artwork-slug={work}
-                data-artwork-title={work}
-                key={"json" + work + index}
-              >
-                {`{"article": "${workObject.html}"}`}
-              </script>
-            );
+    // default to no artwork display:
+    artworkDisplayTemp[0] = "";
 
-            if (!artworkDisplayTemp.length || work === displayWork) {
-              artworkDisplayTemp[0] = workObject.html;
-            }
-          });
-        })
-      ).then(() => {
-        setWorkNav(workNavTemp);
-        setJsonStorage(jsonStorageTemp);
-        setArtworkDisplay(artworkDisplayTemp);
-        setWindowInfo(windowInfoTemp);
+    let previousTheme;
+    let revise = true;
+    if (document.querySelector("MAIN").hasAttribute("data-theme")) {
+      previousTheme = document.querySelector("MAIN").getAttribute("data-theme");
+      if (theme === previousTheme) {
+        revise = false;
+      } else {
+        document.querySelector("MAIN").setAttribute("data-theme", theme);
+      }
+    } else {
+      document.querySelector("MAIN").setAttribute("data-theme", theme);
+    }
+
+    if (revise) {
+      if (testing) {
+        console.log("useEffect: imports");
+      }
+      import(`./${theme}.mjs`).then(({ default: themeObject }) => {
+        Promise.all(
+          themeObject.works.map(async function (work, index) {
+            // we must use await here to ensure the works are returned in order
+            return await import(`../../works/${work}.mjs`).then(function ({
+              default: workObject,
+            }) {
+              if (testing) {
+                console.log("useEffect: " + work);
+              }
+              workNavTemp.push(
+                <li className="display-inline" key={work + index}>
+                  <Link
+                    className="display-inline work-anchor"
+                    href={"/theme/" + theme + "/" + work}
+                    data-artwork-slug={work}
+                  >
+                    {work}
+                  </Link>
+                </li>
+              );
+              jsonStorageTemp.push(
+                <script
+                  type="application/json"
+                  className="artwork-json"
+                  data-json-index="0"
+                  data-artwork-slug={work}
+                  data-artwork-title={work}
+                  key={"json" + work + index}
+                >
+                  {`{"article": "${workObject.html}"}`}
+                </script>
+              );
+
+              // If the url endpoint matches the work, use that for the display content:
+              if (work === displayWork) {
+                artworkDisplayTemp[0] = workObject.html;
+              }
+            });
+          })
+        ).then(() => {
+          setWorkNav(workNavTemp);
+          setJsonStorage(jsonStorageTemp);
+          setArtworkDisplay(artworkDisplayTemp);
+          setWindowInfo(windowInfoTemp);
+        });
       });
-    });
+    } else {
+      // If staying on same theme but swapping item display, just get JSON content:
+      if (displayWork !== "") {
+        let jsonScript = document.querySelector(
+          '.artwork-json[data-artwork-slug="' + displayWork + '"]'
+        );
+        if (jsonScript) {
+          artworkDisplayTemp[0] = JSON.parse(jsonScript.textContent)["article"];
+        }
+      }
+      setArtworkDisplay(artworkDisplayTemp);
+    }
   }, [windowLocationHref]);
 
   const theme = windowInfo[0];
