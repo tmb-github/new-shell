@@ -22,34 +22,7 @@ let propsDummy2 = {
   dataPage: "dummy-2",
   dataHref: "dummy-2",
 };
-let propsDummy3 = {
-  name: "Dummy 3",
-  href: "/dummy-3",
-  classes: "menu-side-one",
-  dataPage: "dummy-3",
-  dataHref: "dummy-3",
-};
-let propsDummy4 = {
-  name: "Dummy 4",
-  href: "/dummy-4",
-  classes: "menu-side-two",
-  dataPage: "dummy-4",
-  dataHref: "dummy-4",
-};
-let propsDummy5 = {
-  name: "Dummy 5",
-  href: "/dummy-5",
-  classes: "menu-side-two",
-  dataPage: "dummy-5",
-  dataHref: "dummy-5",
-};
-let propsDummy6 = {
-  name: "Dummy 6",
-  href: "/dummy-6",
-  classes: "menu-side-two",
-  dataPage: "dummy-6",
-  dataHref: "dummy-6",
-};
+
 let propsContact = {
   name: "Contact",
   href: "/contact",
