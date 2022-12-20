@@ -35,7 +35,7 @@ const scriptSrc =
 const styleSrc = `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.cloudfront.net`;
 const workerSrc = `worker-src 'self' www.google.com www.youtube.com blob:`;
 
-const reactStrictMode = true;
+const reactStrictMode = false;
 // https://google-webfonts-helper.herokuapp.com/fonts/lora?subsets=latin
 const nextConfig = {
   reactStrictMode: reactStrictMode,

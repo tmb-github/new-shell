@@ -23,22 +23,26 @@ export default function Main() {
   const [jsonStorage, setJsonStorage] = useState([]);
   const [artworkDisplay, setArtworkDisplay] = useState([]);
   const [windowInfo, setWindowInfo] = useState([]);
+  const [contentChange, setContentChange] = useState(false);
+
   // If navigating directly to this page, we cannot use window.location.href
   // If navigating here from a different page, window object will be available:
   let href = typeof window === "undefined" ? "" : window.location.href;
   const [windowLocationHref, setWindowLocationHref] = useState(href); //useState([]);
 
   // set to true to log info to console
-  let testing = true;
+  let testing = false;
 
   // Update windowLocationHref if the URL has changed
   // This will trigger useEffect()
   useEffect(() => {
     if (windowLocationHref !== window.location.href) {
       if (testing) {
+        console.clear();
         console.log(window.location.href);
       }
       setWindowLocationHref(window.location.href);
+      setContentChange(false);
     }
   });
 
@@ -46,6 +50,7 @@ export default function Main() {
     if (testing) {
       console.log("useEffect");
     }
+
     const workNavTemp = [];
     const jsonStorageTemp = [];
     const artworkDisplayTemp = [];
@@ -58,14 +63,14 @@ export default function Main() {
     if (testing) {
       console.log("displayWork: " + displayWork);
     }
-    windowInfoTemp.push(theme, urlWork);
+    windowInfoTemp.push(theme, displayWork);
 
     // default to no artwork display:
     artworkDisplayTemp[0] = "";
 
     let previousTheme;
     let revise = true;
-    if (document.querySelector("MAIN").hasAttribute("data-theme")) {
+    if (document.querySelector("MAIN")?.hasAttribute("data-theme")) {
       previousTheme = document.querySelector("MAIN").getAttribute("data-theme");
       if (theme === previousTheme) {
         revise = false;
@@ -73,7 +78,25 @@ export default function Main() {
         document.querySelector("MAIN").setAttribute("data-theme", theme);
       }
     } else {
-      document.querySelector("MAIN").setAttribute("data-theme", theme);
+      document.querySelector("MAIN")?.setAttribute("data-theme", theme);
+    }
+
+    let previousDisplayWork;
+
+    if (document.querySelector("MAIN")?.hasAttribute("data-display-work")) {
+      previousDisplayWork = document
+        .querySelector("MAIN")
+        .getAttribute("data-display-work");
+
+      if (displayWork !== previousDisplayWork) {
+        document
+          .querySelector("MAIN")
+          .setAttribute("data-display-work", displayWork);
+      }
+    } else {
+      document
+        .querySelector("MAIN")
+        ?.setAttribute("data-display-work", displayWork);
     }
 
     if (revise) {
@@ -125,6 +148,7 @@ export default function Main() {
           setJsonStorage(jsonStorageTemp);
           setArtworkDisplay(artworkDisplayTemp);
           setWindowInfo(windowInfoTemp);
+          setContentChange(true);
         });
       });
     } else {
@@ -138,6 +162,7 @@ export default function Main() {
         }
       }
       setArtworkDisplay(artworkDisplayTemp);
+      setWindowInfo(windowInfoTemp);
     }
   }, [windowLocationHref]);
 
@@ -166,53 +191,59 @@ export default function Main() {
 
   if (testing) {
     console.log("return");
+    console.log(contentChange);
   }
-  return (
-    <>
-      <PageHead
-        canonical={canonical}
-        title={title}
-        metaDescription={metaDescription}
-        nonce={generatedNonce}
-      ></PageHead>
 
-      <main className={mainClasses} data-mjs={dataMjs}>
-        <h1 tabIndex="-1" className="screen-reader">
-          Theme Navigation and Display
-        </h1>
-        <section className="theme-display">
-          <h2 className="theme-title" tabIndex="0" id="main-content">
-            {theme}
-          </h2>
-          <nav
-            className="theme-nav"
-            aria-labelledby="image-based-artwork-navigation"
-          >
-            <h3
-              tabIndex="-1"
-              className="screen-reader"
-              id="image-based-artwork-navigation"
+  if (!contentChange) {
+    return <></>;
+  } else {
+    return (
+      <>
+        <PageHead
+          canonical={canonical}
+          title={title}
+          metaDescription={metaDescription}
+          nonce={generatedNonce}
+        ></PageHead>
+
+        <main className={mainClasses} data-mjs={dataMjs}>
+          <h1 tabIndex="-1" className="screen-reader">
+            Theme Navigation and Display
+          </h1>
+          <section className="theme-display">
+            <h2 className="theme-title" tabIndex="0" id="main-content">
+              {theme}
+            </h2>
+            <nav
+              className="theme-nav"
+              aria-labelledby="image-based-artwork-navigation"
             >
-              Image-based Artwork Navigation
-            </h3>
-            <ul className="text-align-center">{workNav}</ul>
-          </nav>
-        </section>
-        <CustomStyle></CustomStyle>
-        <section className="artwork-display">
-          <article
-            className="selected-work"
-            dangerouslySetInnerHTML={{ __html: artworkDisplay[0] }}
-          ></article>
-        </section>
-        <section className="artwork-json-storage">
-          <h2 className="screen-reader">JSON scripts (for internal use)</h2>
-          {jsonStorage}
-        </section>
-        <SchemaBreadcrumbs
-          breadcrumbArray={breadcrumbArray}
-        ></SchemaBreadcrumbs>
-      </main>
-    </>
-  );
+              <h3
+                tabIndex="-1"
+                className="screen-reader"
+                id="image-based-artwork-navigation"
+              >
+                Image-based Artwork Navigation
+              </h3>
+              <ul className="text-align-center">{workNav}</ul>
+            </nav>
+          </section>
+          <CustomStyle></CustomStyle>
+          <section className="artwork-display">
+            <article
+              className="selected-work"
+              dangerouslySetInnerHTML={{ __html: artworkDisplay[0] }}
+            ></article>
+          </section>
+          <section className="artwork-json-storage">
+            <h2 className="screen-reader">JSON scripts (for internal use)</h2>
+            {jsonStorage}
+          </section>
+          <SchemaBreadcrumbs
+            breadcrumbArray={breadcrumbArray}
+          ></SchemaBreadcrumbs>
+        </main>
+      </>
+    );
+  }
 }
