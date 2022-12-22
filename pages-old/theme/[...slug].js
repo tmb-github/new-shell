@@ -128,7 +128,7 @@ export default function Main() {
                 <script
                   type="application/json"
                   className="artwork-json"
-                  data-json-index="0"
+                  data-json-index={index}
                   data-artwork-slug={work}
                   data-artwork-title={work}
                   key={"json" + work + index}
