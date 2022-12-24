@@ -1,0 +1,21 @@
+See: https://nextjs.org/docs/messages/next-image-upgrade-to-13
+
+Run the next-image-to-legacy-image codemod to automatically change next/image imports to next/legacy/image, for example:
+
+npx @next/codemod next-image-to-legacy-image .
+After running this codemod, you can optionally upgrade next/legacy/image to the new next/image with another codemod, for example:
+
+npx @next/codemod next-image-experimental .
+Please note this second codemod is experimental and only covers static usage (such as <Image src={img} layout="responsive" />) but not dynamic usage (such as <Image {...props} />).
+
+https://nextjs.org/docs/api-reference/next/image
+
+If you know the expected device widths of your users, you can specify a list of device width breakpoints using the deviceSizes property in next.config.js. These widths are used when the next/image component uses sizes prop to ensure the correct image is served for user's device.
+
+If no configuration is provided, the default below is used.
+
+module.exports = {
+  images: {
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+  },
+}
