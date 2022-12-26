@@ -6,8 +6,8 @@ html = `<h2>Three</h2><p>Three! Rem possimus voluptate qui voluptas consequatur 
 img = {
 	"src": "/images/works/a03.png",
 	"alt": "a03",
-	"width": "300",
-	"height": "300"
+	"width": "384",
+	"height": "384"
 };
 
 export default Object.freeze({

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PageHead from "components/PageHead";
 import SchemaBreadcrumbs from "components/SchemaBreadcrumbs";
 import Link from "next/link";
+import Image from "next/legacy/image";
 
 // Edit per page:
 import CustomStyle from "custom-style/PageTheme";
@@ -21,7 +22,8 @@ const generatedNonce = process.env.generatedNonce;
 export default function Main() {
   const [workNav, setWorkNav] = useState([]);
   const [jsonStorage, setJsonStorage] = useState([]);
-  const [artworkDisplay, setArtworkDisplay] = useState([]);
+  const [artworkHtml, setArtworkHtml] = useState([]);
+  const [artworkImg, setArtworkImg] = useState([]);
   const [windowInfo, setWindowInfo] = useState([]);
   const [contentChange, setContentChange] = useState(false);
 
@@ -53,7 +55,8 @@ export default function Main() {
 
     const workNavTemp = [];
     const jsonStorageTemp = [];
-    const artworkDisplayTemp = [];
+    const artworkHtmlTemp = [];
+    const artworkImgTemp = [];
     const windowInfoTemp = [];
 
     const urlParts = window.location.href.split("/").reverse();
@@ -66,7 +69,8 @@ export default function Main() {
     windowInfoTemp.push(theme, displayWork);
 
     // default to no artwork display:
-    artworkDisplayTemp[0] = "";
+    artworkHtmlTemp[0] = "";
+    artworkImgTemp[0] = "";
 
     let previousTheme;
     let revise = true;
@@ -124,6 +128,7 @@ export default function Main() {
                   </Link>
                 </li>
               );
+
               jsonStorageTemp.push(
                 <script
                   type="application/json"
@@ -133,20 +138,29 @@ export default function Main() {
                   data-artwork-title={work}
                   key={"json" + work + index}
                 >
-                  {`{"article": "${workObject.html}"}`}
+                  {`{"article": "${workObject.html}", "image": 
+                    {
+                      "src": "${workObject.img.src}",
+                      "alt": "${workObject.img.alt}",
+                      "width": "${workObject.img.width}",
+                      "height": "${workObject.img.height}",
+                    }
+                  }`}
                 </script>
               );
 
               // If the url endpoint matches the work, use that for the display content:
               if (work === displayWork) {
-                artworkDisplayTemp[0] = workObject.html;
+                artworkHtmlTemp[0] = workObject.html;
+                artworkImgTemp[0] = workObject.img;
               }
             });
           })
         ).then(() => {
           setWorkNav(workNavTemp);
           setJsonStorage(jsonStorageTemp);
-          setArtworkDisplay(artworkDisplayTemp);
+          setArtworkHtml(artworkHtmlTemp);
+          setArtworkImg(artworkImgTemp);
           setWindowInfo(windowInfoTemp);
           setContentChange(true);
         });
@@ -158,10 +172,12 @@ export default function Main() {
           '.artwork-json[data-artwork-slug="' + displayWork + '"]'
         );
         if (jsonScript) {
-          artworkDisplayTemp[0] = JSON.parse(jsonScript.textContent)["article"];
+          artworkHtmlTemp[0] = JSON.parse(jsonScript.textContent)["article"];
+          artworkImgTemp[0] = JSON.parse(jsonScript.textContent)["image"];
         }
       }
-      setArtworkDisplay(artworkDisplayTemp);
+      setArtworkHtml(artworkHtmlTemp);
+      setArtworkImg(artworkImgTemp);
       setWindowInfo(windowInfoTemp);
     }
   }, [windowLocationHref]);
@@ -193,6 +209,22 @@ export default function Main() {
     console.log("return");
     console.log(contentChange);
   }
+
+  const artworkImage = (artworkImg) => {
+    if (artworkImg[0] && artworkImg[0].src) {
+      return (
+        <Image
+          src={artworkImg[0].src}
+          alt={artworkImg[0].alt}
+          width={artworkImg[0].width}
+          height={artworkImg[0].height}
+          priority
+        />
+      );
+    } else {
+      return <></>;
+    }
+  };
 
   if (!contentChange) {
     return <></>;
@@ -230,9 +262,10 @@ export default function Main() {
           </section>
           <CustomStyle></CustomStyle>
           <section className="artwork-display">
+            {artworkImage(artworkImg)}
             <article
               className="selected-work"
-              dangerouslySetInnerHTML={{ __html: artworkDisplay[0] }}
+              dangerouslySetInnerHTML={{ __html: artworkHtml[0] }}
             ></article>
           </section>
           <section className="artwork-json-storage">
